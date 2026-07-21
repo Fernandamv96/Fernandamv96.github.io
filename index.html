@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FERR — Code & Cybersecurity Portfolio</title>
+  <meta name="description" content="Portafolio de Fernanda (Ferr) — estudiante de Programación y Ciberseguridad en INACAP. CTF, hacking ético, desarrollo web." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/217666129?v=4" />
+</head>
+<body>
+  <!-- Circuit Watermark Layer -->
+  <div class="watermark" aria-hidden="true">
+    <svg class="watermark-leaf watermark-leaf-1" viewBox="0 0 200 200" fill="none">
+      <polygon points="100,10 175,55 175,145 100,190 25,145 25,55" stroke="currentColor" stroke-width="1.2" fill="none" />
+      <polygon points="100,40 150,70 150,130 100,160 50,130 50,70" stroke="currentColor" stroke-width="0.8" fill="none" />
+      <polygon points="100,70 125,85 125,115 100,130 75,115 75,85" stroke="currentColor" stroke-width="0.6" fill="none" />
+      <line x1="100" y1="10"  x2="100" y2="190" stroke="currentColor" stroke-width="0.5" />
+      <line x1="25"  y1="55"  x2="175" y2="145" stroke="currentColor" stroke-width="0.5" />
+      <line x1="175" y1="55"  x2="25"  y2="145" stroke="currentColor" stroke-width="0.5" />
+    </svg>
+    <svg class="watermark-leaf watermark-leaf-2" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="1" fill="none" />
+      <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="0.8" fill="none" />
+      <circle cx="100" cy="100" r="40" stroke="currentColor" stroke-width="0.6" fill="none" />
+      <circle cx="100" cy="100" r="20" stroke="currentColor" stroke-width="0.5" fill="none" />
+      <line x1="20"  y1="100" x2="180" y2="100" stroke="currentColor" stroke-width="0.4" />
+      <line x1="100" y1="20"  x2="100" y2="180" stroke="currentColor" stroke-width="0.4" />
+      <line x1="42"  y1="42"  x2="158" y2="158" stroke="currentColor" stroke-width="0.4" />
+      <line x1="158" y1="42"  x2="42"  y2="158" stroke="currentColor" stroke-width="0.4" />
+    </svg>
+    <svg class="watermark-leaf watermark-leaf-3" viewBox="0 0 200 200" fill="none">
+      <rect x="20"  y="20"  width="160" height="160" stroke="currentColor" stroke-width="0.6" fill="none" />
+      <rect x="40"  y="40"  width="120" height="120" stroke="currentColor" stroke-width="0.7" fill="none" />
+      <rect x="60"  y="60"  width="80"  height="80"  stroke="currentColor" stroke-width="0.8" fill="none" />
+      <rect x="80"  y="80"  width="40"  height="40"  stroke="currentColor" stroke-width="0.9" fill="none" />
+      <circle cx="20"  cy="20"  r="3" fill="currentColor" />
+      <circle cx="180" cy="20"  r="3" fill="currentColor" />
+      <circle cx="20"  cy="180" r="3" fill="currentColor" />
+      <circle cx="180" cy="180" r="3" fill="currentColor" />
+      <circle cx="100" cy="100" r="4" fill="currentColor" />
+    </svg>
+  </div>
+
+  <!-- Top Navigation -->
+  <header class="topnav">
+    <div class="topnav-inner">
+      <a class="brand" href="#home" aria-label="FERR — home">
+        <span class="brand-mark">F</span>
+        <span class="brand-text">FERR</span>
+      </a>
+      <nav class="nav" aria-label="Principal">
+        <a class="nav-btn" href="#about">ABOUT</a>
+        <a class="nav-btn" href="#stack">STACK</a>
+        <a class="nav-btn" href="#work">WORK</a>
+        <a class="nav-btn" href="#stats">STATS</a>
+        <a class="nav-btn" href="#contact">CONTACT</a>
+      </nav>
+      <a class="nav-cta" href="https://github.com/Fernandamv96" target="_blank" rel="noopener">GITHUB ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <p class="eyebrow">PROGRAMMING × CYBERSECURITY × INACAP</p>
+      <h1 class="display">
+        <span class="display-line">FERR</span>
+        <span class="display-line dim">FERNANDA</span>
+      </h1>
+      <div class="hero-meta">
+        <p class="hero-sub">
+          Estudiante de programación y ciberseguridad. CTF, hacking ético, desarrollo web.
+          <span class="hero-sub-em">Siempre aprendiendo.</span>
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#work">VER PROYECTOS</a>
+          <a class="btn btn-ghost" href="#contact">CONTACTAR</a>
+        </div>
+      </div>
+      <div class="hero-portrait" aria-hidden="true">
+        <div class="portrait-glow"></div>
+        <img class="portrait-img" src="https://avatars.githubusercontent.com/u/217666129?v=4" alt="" loading="lazy" />
+      </div>
+      <p class="hero-typing" aria-hidden="true">
+        <span>$</span> cat ferr.txt <span class="cursor">_</span>
+      </p>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- ABOUT / whoami -->
+    <section class="section" id="about">
+      <p class="eyebrow">`&gt; whoami`</p>
+      <h2 class="heading">A NEW ANGLE OF CODE</h2>
+      <div class="about-grid">
+        <div class="code-card" role="region" aria-label="Terminal con información de Ferr">
+          <div class="code-card-head">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span class="code-card-file">ferr.txt</span>
+          </div>
+          <pre class="code"><code><span class="c-key">nombre</span>   →  <span class="c-val">Ferr</span>
+<span class="c-key">estudio</span>  →  <span class="c-val">Programación + Ciberseguridad @ INACAP</span>
+<span class="c-key">interés</span>  →  <span class="c-val">CTF, hacking ético, desarrollo web</span>
+<span class="c-key">hobbies</span>  →  <span class="c-val">arte digital, gaming, música</span>
+<span class="c-key">estado</span>   →  <span class="c-val">siempre aprendiendo...</span></code></pre>
+        </div>
+        <div class="about-side">
+          <p class="lead">
+            Soy Fernanda, pero todos me dicen <em>Ferr</em>. Estudio programación y ciberseguridad en
+            <strong>INACAP</strong> y paso el rato entre CTFs, líneas de código y música.
+          </p>
+          <ul class="about-list">
+            <li><span class="bullet">●</span> 3 followers · 3 following</li>
+            <li><span class="bullet">●</span> 24 repos públicos</li>
+            <li><span class="bullet">●</span> Apasionada por el ethical hacking</li>
+            <li><span class="bullet">●</span> Arte digital &amp; pixel-art lover</li>
+          </ul>
+          <div class="badges">
+            <span class="badge badge-gold">PROGRAMMING</span>
+            <span class="badge badge-gold">CYBERSECURITY</span>
+            <span class="badge badge-red">CTF PLAYER</span>
+            <span class="badge badge-gold">PIXEL ART</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- STACK -->
+    <section class="section" id="stack">
+      <p class="eyebrow">`&gt; stack`</p>
+      <h2 class="heading">HERRAMIENTAS<br />DEL DÍA A DÍA</h2>
+      <p class="section-sub">El combo que uso para construir, romper y aprender.</p>
+      <div class="stack-grid">
+        <div class="stack-tile">
+          <span class="stack-glyph">JS</span>
+          <span class="stack-name">JavaScript</span>
+          <span class="stack-note">lenguaje principal</span>
+        </div>
+        <div class="stack-tile">
+          <span class="stack-glyph">PY</span>
+          <span class="stack-name">Python</span>
+          <span class="stack-note">scripts &amp; ctf</span>
+        </div>
+        <div class="stack-tile">
+          <span class="stack-glyph">&lt;/&gt;</span>
+          <span class="stack-name">HTML5</span>
+          <span class="stack-note">estructura</span>
+        </div>
+        <div class="stack-tile">
+          <span class="stack-glyph">#</span>
+          <span class="stack-name">CSS3</span>
+          <span class="stack-note">estilo</span>
+        </div>
+        <div class="stack-tile">
+          <span class="stack-glyph">$_</span>
+          <span class="stack-name">Linux</span>
+          <span class="stack-note">terminal first</span>
+        </div>
+        <div class="stack-tile">
+          <span class="stack-glyph">⌥</span>
+          <span class="stack-name">Git</span>
+          <span class="stack-note">versionado</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- LEARNING -->
+    <section class="section" id="learning">
+      <p class="eyebrow">`&gt; currently learning`</p>
+      <h2 class="heading">SIEMPRE<br />APRENDIENDO</h2>
+      <div class="learning-row">
+        <span class="pill pill-gold">Python</span>
+        <span class="pill pill-gold">JavaScript</span>
+        <span class="pill pill-gold">Linux &amp; Bash</span>
+        <span class="pill pill-red">CTF / Hacking</span>
+        <span class="pill pill-gold">HTML / CSS</span>
+        <span class="pill pill-gold">Networking</span>
+      </div>
+      <p class="section-foot">arte digital · gaming · música 🎧</p>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- WORK / PROJECTS -->
+    <section class="section" id="work">
+      <p class="eyebrow">`&gt; proyectos`</p>
+      <h2 class="heading">A NEW ANGLE<br />OF CODE</h2>
+      <p class="section-sub">Una selección de los 24 repos públicos. HTML, JavaScript, sistemas clínicos, React e informes.</p>
+
+      <div class="project-grid">
+        <a class="project-card" href="https://github.com/Fernandamv96/Clinica-registro-pacientes" target="_blank" rel="noopener">
+          <div class="project-head">
+            <span class="project-tag">JS · SYSTEM</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <h3 class="project-title">Clinica registro pacientes</h3>
+          <p class="project-desc">Sistema de registro de pacientes para clínica médica.</p>
+          <div class="project-foot">
+            <span class="lang-dot lang-js"></span>
+            <span>JavaScript</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/Fernandamv96/Infografia-.banco" target="_blank" rel="noopener">
+          <div class="project-head">
+            <span class="project-tag">REACT · INFO</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <h3 class="project-title">Infografía banco</h3>
+          <p class="project-desc">Proyecto para aprender React con foco en infografías interactivas.</p>
+          <div class="project-foot">
+            <span class="lang-dot lang-js"></span>
+            <span>JavaScript · React</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/Fernandamv96/Fundamentos-de-la-seguridad-de-la-info-" target="_blank" rel="noopener">
+          <div class="project-head">
+            <span class="project-tag">CYBERSEC · INFORME</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <h3 class="project-title">Fundamentos de seguridad</h3>
+          <p class="project-desc">Informe sobre los fundamentos de la seguridad de la información.</p>
+          <div class="project-foot">
+            <span class="lang-dot lang-html"></span>
+            <span>HTML</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/Fernandamv96/Formulario-Cl-nico-" target="_blank" rel="noopener">
+          <div class="project-head">
+            <span class="project-tag">HTML · FORM</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <h3 class="project-title">Formulario clínico</h3>
+          <p class="project-desc">Formulario clínico en HTML para práctica de UI médica.</p>
+          <div class="project-foot">
+            <span class="lang-dot lang-html"></span>
+            <span>HTML</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/Fernandamv96/turismo-extremo-sur" target="_blank" rel="noopener">
+          <div class="project-head">
+            <span class="project-tag">HTML · WEB</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <h3 class="project-title">Turismo extremo sur</h3>
+          <p class="project-desc">Sitio web de turismo para la zona sur, maquetado en HTML.</p>
+          <div class="project-foot">
+            <span class="lang-dot lang-html"></span>
+            <span>HTML</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/Fernandamv96?tab=repositories" target="_blank" rel="noopener">
+          <div class="project-head">
+            <span class="project-tag">+ 19 MÁS</span>
+            <span class="project-arrow">↗</span>
+          </div>
+          <h3 class="project-title">Ver todos los repos</h3>
+          <p class="project-desc">24 repositorios públicos. Evaluaciones, prácticas y más.</p>
+          <div class="project-foot">
+            <span class="lang-dot lang-mix"></span>
+            <span>github.com/Fernandamv96</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- STATS -->
+    <section class="section" id="stats">
+      <p class="eyebrow">`&gt; stats`</p>
+      <h2 class="heading">EN NÚMEROS</h2>
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-num">24</span>
+          <span class="stat-label">repos públicos</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">03</span>
+          <span class="stat-label">followers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">03</span>
+          <span class="stat-label">following</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">curiosidad</span>
+        </div>
+      </div>
+      <div class="stats-images">
+        <img
+          class="stats-img"
+          src="https://github-readme-stats.vercel.app/api?username=Fernandamv96&show_icons=true&theme=dracula&include_all_commits=true&count_private=true&hide_border=true&bg_color=0d1117"
+          alt="GitHub stats for Fernandamv96"
+          loading="lazy"
+        />
+        <img
+          class="stats-img"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=Fernandamv96&layout=compact&theme=dracula&hide_border=true&bg_color=0d1117"
+          alt="Top languages for Fernandamv96"
+          loading="lazy"
+        />
+      </div>
+      <img
+        class="stats-streak"
+        src="https://streak-stats.demolab.com?user=Fernandamv96&theme=dracula&hide_border=true&background=0d1117&ring=ff79c6&fire=ff2d78&currStreakLabel=BD93F9"
+        alt="GitHub streak stats for Fernandamv96"
+        loading="lazy"
+      />
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <p class="eyebrow">`&gt; contacto`</p>
+      <h2 class="display display-section">HABLEMOS</h2>
+      <p class="section-sub">¿CTF colaborativo, feedback o simplemente saludar? Aquí me encuentras.</p>
+      <div class="contact-row">
+        <a class="btn btn-primary" href="mailto:Pelusaaaaaaaa@gmail.com">✉ GMAIL</a>
+        <a class="btn btn-ghost" href="https://github.com/Fernandamv96" target="_blank" rel="noopener">GITHUB ↗</a>
+        <a class="btn btn-ghost" href="https://open.spotify.com/user/3172sdkmnqoucgtdmsmun6nl6xf4?si=146b3cc1b6094202" target="_blank" rel="noopener">SPOTIFY ↗</a>
+      </div>
+      <p class="contact-foot">
+        <em>escuchando lo que sea que me mantenga en modo focus</em> 🎧
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-line">
+      hecho con <span class="footer-fire">🔥</span> por <a href="https://github.com/Fernandamv96" target="_blank" rel="noopener">@Fernandamv96</a>
+    </p>
+    <p class="footer-meta">INACAP · Programación &amp; Ciberseguridad · 2026</p>
+  </footer>
+
+  <a class="float-btn" href="#home" aria-label="Volver arriba">
+    <span>↑</span>
+  </a>
+
+  <script>
+    // Smooth scroll for nav links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          const el = document.querySelector(id);
+          if (el) {
+            e.preventDefault();
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
