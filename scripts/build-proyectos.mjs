@@ -25,7 +25,11 @@ function tarjeta(p) {
   const decisiones = p.decisiones.map((d) => `                  <li>${rich(d)}</li>`).join('\n')
   const stack = p.stack.map((s) => `<li>${escape(s)}</li>`).join('')
 
-  return `        <article class="case" id="proyecto-${escape(p.id)}" aria-labelledby="${tituloId}">
+  const imagen = p.imagen
+    ? `\n          <img class="case-thumb" src="${escape(p.imagen)}" alt="${escape(p.alt)}" width="640" height="360" loading="lazy" decoding="async" />`
+    : ''
+
+  return `        <article class="case" id="proyecto-${escape(p.id)}" aria-labelledby="${tituloId}">${imagen}
           <div class="project-head">
             <span class="project-tag">${escape(p.tag)}</span>
             <span class="lang-dot lang-${escape(p.lang)}" aria-hidden="true"></span>

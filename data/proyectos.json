@@ -49,7 +49,9 @@
       "Sin credenciales ni JWT secret por defecto: todo se lee de variables de entorno (`.env.example`).",
       "El admin inicial se crea desde una variable de entorno y su contraseña ya no se imprime en los logs."
     ],
-    "resultado": "CI con `mvn verify`, build de Docker y CodeQL."
+    "resultado": "CI con `mvn verify`, build de Docker y CodeQL.",
+    "imagen": "assets/proyectos/clinica.webp",
+    "alt": "Swagger UI de la API de Clínica con los endpoints de autenticación, historial y pacientes"
   },
   {
     "id": "mediform",
@@ -98,7 +100,9 @@
       "Headers CSP, X-Frame-Options, X-Content-Type-Options y Referrer-Policy en todas las respuestas.",
       "Proyecto educativo: no está pensado para datos clínicos reales."
     ],
-    "resultado": "CI con ruff y pytest en Python 3.10 y 3.12, más CodeQL."
+    "resultado": "CI con ruff y pytest en Python 3.10 y 3.12, más CodeQL.",
+    "imagen": "assets/proyectos/mediform.webp",
+    "alt": "Formulario de nueva consulta clínica de MediForm, sección de datos del paciente"
   },
   {
     "id": "infografia",
@@ -141,7 +145,9 @@
       "Contrastar fuentes corrigió la versión original: el malware fue un wiper (KillDisk), no WannaCry, y se quitaron cifras sin respaldo.",
       "Verificada con axe-core: 0 violaciones WCAG 2.1 AA."
     ],
-    "resultado": "CI con ESLint, tests de datos y build, más CodeQL."
+    "resultado": "CI con ESLint, tests de datos y build, más CodeQL.",
+    "imagen": "assets/proyectos/infografia.webp",
+    "alt": "Portada de la infografía del ciberataque al Banco de Chile con las cifras del incidente"
   },
   {
     "id": "auditoria-cia",
@@ -180,7 +186,9 @@
       "Los tests revelaron que el control de acceso permitía recursos desconocidos (fail-open); ahora deniega por defecto.",
       "Un hash sin clave detecta cambios accidentales, pero contra un atacante haría falta un HMAC: queda documentado como mejora."
     ],
-    "resultado": "CI con ruff, pytest y ejecución completa de la simulación."
+    "resultado": "CI con ruff, pytest y ejecución completa de la simulación.",
+    "imagen": "assets/proyectos/auditoria-cia.webp",
+    "alt": "Simulador de auditoría con los tres principios CIA y el control de acceso por roles"
   },
   {
     "id": "wiki-sqli",
@@ -214,7 +222,9 @@
       "Enseñar el concepto sin publicar material ofensivo funcional.",
       "La prevención se centra en consultas parametrizadas; la validación y el escape son capas extra."
     ],
-    "resultado": "CI con ESLint y build, más CodeQL."
+    "resultado": "CI con ESLint y build, más CodeQL.",
+    "imagen": "assets/proyectos/wiki-sqli.webp",
+    "alt": "Inicio de la wiki de inyección SQL con las secciones de aprendizaje"
   },
   {
     "id": "turismo",
@@ -249,7 +259,9 @@
       "Para que la CSP prohíba estilos inline, el encuadre de las imágenes pasó de `style=\"...\"` a CSSOM.",
       "El navbar translúcido sobre la aurora animada no cumplía el contraste AA: se le dio fondo oscuro."
     ],
-    "resultado": "CI con ESLint, html-validate y verificación de recursos; axe-core sin violaciones."
+    "resultado": "CI con ESLint, html-validate y verificación de recursos; axe-core sin violaciones.",
+    "imagen": "assets/proyectos/turismo.webp",
+    "alt": "Portada del sitio Turismo Extremo Sur con los Cuernos del Paine"
   },
   {
     "id": "techstore",
@@ -297,7 +309,9 @@
       "El manejador de errores ya no devuelve `err.message` al cliente en producción.",
       "`listen()` solo se ejecuta al correr el servidor directamente, para poder testear la app."
     ],
-    "resultado": "CI con tests del backend, ESLint y build del frontend, más CodeQL."
+    "resultado": "CI con tests del backend, ESLint y build del frontend, más CodeQL.",
+    "imagen": "assets/proyectos/techstore.webp",
+    "alt": "Panel de TechStore Manager con el formulario de productos y las métricas de inventario"
   },
   {
     "id": "farmacia",
@@ -344,6 +358,8 @@
       "`SECRET_KEY` obligatoria en producción: antes, si faltaba, se usaba una clave insegura.",
       "Cookies `Secure`, HSTS y `Referrer-Policy` cuando `DEBUG` está apagado; el CI corre `manage.py check --deploy`."
     ],
-    "resultado": "CI con ruff, tests de Django y chequeos de despliegue, más CodeQL."
+    "resultado": "CI con ruff, tests de Django y chequeos de despliegue, más CodeQL.",
+    "imagen": "assets/proyectos/farmacia.webp",
+    "alt": "Catálogo de medicamentos con métricas de inventario y estado de vencimiento"
   }
 ]
