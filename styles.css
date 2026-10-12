@@ -1205,6 +1205,7 @@ ul.learning-row,
   border-radius: 4px;
   background: var(--surface-deep);
   color: var(--color-neon-cyan);
+  white-space: nowrap;
 }
 
 .case-links { display: flex; gap: 16px; margin-top: auto; }
