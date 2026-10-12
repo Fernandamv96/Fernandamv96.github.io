@@ -499,6 +499,102 @@
               <a class="case-link case-link-demo" href="https://turismo-extremo-sur-zeta.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> de Turismo Extremo Sur</span></a>
           </div>
         </article>
+
+        <article class="case" id="proyecto-techstore" aria-labelledby="proyecto-techstore-titulo">
+          <div class="project-head">
+            <span class="project-tag">FULL STACK · REACT</span>
+            <span class="lang-dot lang-js" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-techstore-titulo">TechStore Manager</h3>
+          <dl class="case-summary">
+            <div><dt>El problema</dt><dd>Una tienda de tecnología administraba su inventario a mano, sin una vista rápida del stock, el valor total ni los productos por reponer.</dd></div>
+            <div><dt>La solución</dt><dd>Un sistema full stack con API REST para el CRUD de productos y un panel en React con métricas de inventario en tiempo real.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>React</li><li>Express</li><li>Axios</li><li>Vercel</li></ul>
+          <details class="case-details">
+            <summary>Cómo lo construí</summary>
+            <div class="case-body">
+              <div>
+                <h4>Cómo usé cada tecnología</h4>
+                <dl class="case-tech">
+                  <dt>Express</dt>
+                  <dd>API REST separada en rutas, controladores y middleware; la validación en el servidor (nombre, categoría, precio &gt; 0, stock ≥ 0) es la fuente de verdad.</dd>
+                  <dt>Middleware propio</dt>
+                  <dd>Un logger registra método, ruta y hora de cada petición.</dd>
+                  <dt>React</dt>
+                  <dd>Componentes (formulario, tabla, estadísticas, notificaciones) con <code>useState</code>, <code>useMemo</code> para las métricas y <code>useCallback</code> para los manejadores.</dd>
+                  <dt>Axios</dt>
+                  <dd>Una capa <code>services/api.js</code> centraliza las llamadas y convierte los errores en mensajes legibles para el usuario.</dd>
+                  <dt>Vercel</dt>
+                  <dd>Frontend y API desplegados juntos: los rewrites envían <code>/productos</code> a una función serverless que reutiliza la app Express.</dd>
+                  <dt>node:test</dt>
+                  <dd>6 tests de la API sin dependencias extra: CRUD completo, validaciones, JSON malformado y headers.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisiones y seguridad</h4>
+                <ul class="case-decisions">
+                  <li>CORS restringible con la variable <code>FRONTEND_URL</code> y sin la cabecera <code>X-Powered-By</code>.</li>
+                  <li>El manejador de errores ya no devuelve <code>err.message</code> al cliente en producción.</li>
+                  <li><code>listen()</code> solo se ejecuta al correr el servidor directamente, para poder testear la app.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI con tests del backend, ESLint y build del frontend, más CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/TechStoreManager" target="_blank" rel="noopener noreferrer">código ↗<span class="sr-only"> de TechStore Manager</span></a>
+              <a class="case-link case-link-demo" href="https://techstore-api-one.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> de TechStore Manager</span></a>
+          </div>
+        </article>
+
+        <article class="case" id="proyecto-farmacia" aria-labelledby="proyecto-farmacia-titulo">
+          <div class="project-head">
+            <span class="project-tag">PYTHON · DJANGO</span>
+            <span class="lang-dot lang-py" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-farmacia-titulo">Catálogo Farmacia</h3>
+          <dl class="case-summary">
+            <div><dt>El problema</dt><dd>En una farmacia, los productos vencidos o por vencer se detectan tarde cuando el inventario vive en una planilla.</dd></div>
+            <div><dt>La solución</dt><dd>Un CRUD en Django que muestra el valor del inventario, alerta de los productos por vencer en 30 días o ya vencidos y no permite registrar productos con fecha vencida.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>Python</li><li>Django</li><li>SQLite / PostgreSQL</li><li>Vercel</li></ul>
+          <details class="case-details">
+            <summary>Cómo lo construí</summary>
+            <div class="case-body">
+              <div>
+                <h4>Cómo usé cada tecnología</h4>
+                <dl class="case-tech">
+                  <dt>Django (vistas genéricas)</dt>
+                  <dd><code>ListView</code>, <code>CreateView</code>, <code>UpdateView</code> y <code>DeleteView</code> cubren el CRUD; la vista de listado calcula las métricas del inventario.</dd>
+                  <dt>Django Forms</dt>
+                  <dd><code>clean_fecha_vencimiento</code> rechaza fechas pasadas antes de guardar.</dd>
+                  <dt>ORM + migraciones</dt>
+                  <dd>SQLite en local y PostgreSQL vía <code>DATABASE_URL</code> en producción, sin cambiar el código.</dd>
+                  <dt>WhiteNoise</dt>
+                  <dd>Sirve los archivos estáticos (incluido el admin) en el entorno serverless.</dd>
+                  <dt>Vercel</dt>
+                  <dd>Al arrancar se aplican las migraciones y se crea el superusuario desde variables de entorno.</dd>
+                  <dt>Tests de Django</dt>
+                  <dd>Listado, creación, eliminación y rechazo de fechas vencidas.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisiones y seguridad</h4>
+                <ul class="case-decisions">
+                  <li><code>SECRET_KEY</code> obligatoria en producción: antes, si faltaba, se usaba una clave insegura.</li>
+                  <li>Cookies <code>Secure</code>, HSTS y <code>Referrer-Policy</code> cuando <code>DEBUG</code> está apagado; el CI corre <code>manage.py check --deploy</code>.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI con ruff, tests de Django y chequeos de despliegue, más CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/CatalogoFarmacia" target="_blank" rel="noopener noreferrer">código ↗<span class="sr-only"> de Catálogo Farmacia</span></a>
+          </div>
+        </article>
         <!-- proyectos:fin -->
       </div>
       <p class="case-more">
