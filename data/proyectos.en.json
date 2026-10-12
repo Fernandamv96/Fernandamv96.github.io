@@ -1,0 +1,206 @@
+[
+  {
+    "id": "clinica",
+    "nombre": "Clinic: patient records API",
+    "tag": "JAVA · REST API",
+    "lang": "java",
+    "stack": ["Java 21", "Spring Boot", "PostgreSQL", "Docker"],
+    "repo": "https://github.com/Fernandamv96/Clinica-registro-pacientes",
+    "demo": null,
+    "imagen": "assets/proyectos/clinica.webp",
+    "alt": "Swagger UI of the clinic API showing the authentication, medical history and patient endpoints",
+    "problema": "Keeping patients and medical histories in spreadsheets exposes sensitive data and gives no control over who can read or change each record.",
+    "solucion": "A REST API with authentication, three roles (admin, doctor and reception) and Chilean RUT validation: reception registers patients, doctors write the medical history and only admins manage users.",
+    "tecnologias": [
+      { "nombre": "Spring Boot 3", "uso": "Layered structure (controller → service → repository), DTOs and a global exception handler with consistent responses." },
+      { "nombre": "Spring Security + JWT", "uso": "Login returns a token and every endpoint requires a role through `@PreAuthorize`; passwords are stored with BCrypt." },
+      { "nombre": "PostgreSQL + Flyway", "uso": "The schema lives in versioned migrations (tables, indexes and development data), so the database is rebuilt identically in any environment." },
+      { "nombre": "Spring Data JPA", "uso": "Paginated patient search by RUT, name or email without hand-written SQL." },
+      { "nombre": "Docker Compose", "uso": "Starts the API and PostgreSQL with one command; multi-stage image with a non-root user, and Compose stops if a secret is missing." },
+      { "nombre": "JUnit 5 + Mockito", "uso": "22 tests: RUT validator, patient service and a security regression test." },
+      { "nombre": "SpringDoc OpenAPI", "uso": "Swagger UI to document and try every endpoint." }
+    ],
+    "decisiones": [
+      "I found that user registration was public and let anyone create an ADMIN account: now only an admin can register users, backed by a test.",
+      "No default credentials or JWT secret: everything is read from environment variables (`.env.example`).",
+      "The initial admin is created from an environment variable and its password is no longer printed in the logs."
+    ],
+    "resultado": "CI with `mvn verify`, Docker build and CodeQL."
+  },
+  {
+    "id": "mediform",
+    "nombre": "MediForm",
+    "tag": "PYTHON · WEB",
+    "lang": "py",
+    "stack": ["Python", "Flask", "SQLite", "pytest"],
+    "repo": "https://github.com/Fernandamv96/Formulario-Cl-nico-",
+    "demo": null,
+    "imagen": "assets/proyectos/mediform.webp",
+    "alt": "MediForm new clinical visit form, patient data section",
+    "problema": "On a paper visit form, fields are left blank, abnormal vital signs go unnoticed and finding a previous visit takes time.",
+    "solucion": "A sectioned clinical form validated on both client and server, with alerts when a vital sign is out of range, automatic age and BMI calculation, and search by name or ID number.",
+    "tecnologias": [
+      { "nombre": "Flask + Jinja2", "uso": "Routes, templates and custom filters (age, BMI and vital-sign status) used directly in the HTML." },
+      { "nombre": "SQLite", "uso": "Serverless persistence; every query is parameterized with `?`." },
+      { "nombre": "Flask-WTF", "uso": "CSRF protection on every form that submits data." },
+      { "nombre": "Vanilla JavaScript", "uso": "Live validation and delete confirmation without inline scripts, compatible with a strict CSP." },
+      { "nombre": "pytest", "uso": "19 tests: creating visits, required fields, rejecting requests without a CSRF token, security headers and configuration." },
+      { "nombre": "gunicorn", "uso": "Production server for deployment (Procfile)." }
+    ],
+    "decisiones": [
+      "Debug off by default and server bound to 127.0.0.1: `debug=True` on 0.0.0.0 exposes the Werkzeug console to the network.",
+      "The app refuses to start in production without a `SECRET_KEY`.",
+      "CSP, X-Frame-Options, X-Content-Type-Options and Referrer-Policy headers on every response.",
+      "Educational project: not intended for real clinical data."
+    ],
+    "resultado": "CI with ruff and pytest on Python 3.10 and 3.12, plus CodeQL."
+  },
+  {
+    "id": "infografia",
+    "nombre": "Infographic: the 2018 Banco de Chile attack",
+    "tag": "REACT · CYBERSEC",
+    "lang": "js",
+    "stack": ["React", "Vite", "CSS", "GitHub Pages"],
+    "repo": "https://github.com/Fernandamv96/Infografia-.banco",
+    "demo": "https://fernandamv96.github.io/Infografia-.banco/",
+    "imagen": "assets/proyectos/infografia.webp",
+    "alt": "Cover of the Banco de Chile cyberattack infographic with the incident figures",
+    "problema": "Real incidents are studied through long texts and, often, with figures nobody verified.",
+    "solucion": "An interactive infographic that explains the attack through the CIA triad and labels each claim as documented, hypothesis or unconfirmed, with its sources.",
+    "tecnologias": [
+      { "nombre": "React", "uso": "Reusable components: collapsible timeline, CIA triad tabs and a vulnerability → mitigations filter." },
+      { "nombre": "JSON + node:test", "uso": "All content lives in a JSON file and tests check that every source reference and every vulnerability → mitigation link exists." },
+      { "nombre": "Vite + GitHub Actions", "uso": "Production build and automatic deployment to GitHub Pages on every push." },
+      { "nombre": "WAI-ARIA", "uso": "Arrow-key tabs, an accordion with `aria-expanded` and filters with `aria-pressed` and `aria-live`." },
+      { "nombre": "Custom CSS", "uso": "Terminal look, print styles for PDF export and `prefers-reduced-motion`." }
+    ],
+    "decisiones": [
+      "Cross-checking sources fixed the original version: the malware was a wiper (KillDisk), not WannaCry, and unsupported figures were removed.",
+      "Checked with axe-core: 0 WCAG 2.1 AA violations."
+    ],
+    "resultado": "CI with ESLint, data tests and build, plus CodeQL."
+  },
+  {
+    "id": "auditoria-cia",
+    "nombre": "CIA Audit",
+    "tag": "CYBERSEC · CIA",
+    "lang": "py",
+    "stack": ["Python", "hashlib", "HTML", "pytest"],
+    "repo": "https://github.com/Fernandamv96/Fundamentos-de-la-seguridad-de-la-info-",
+    "demo": null,
+    "imagen": "assets/proyectos/auditoria-cia.webp",
+    "alt": "Audit simulator showing the three CIA principles and role-based access control",
+    "problema": "How do you stop a student from seeing other students' sensitive data, changing their own grades, or losing exam week to a system outage?",
+    "solucion": "A simulation of controls for each CIA principle applied to INACAP's systems, in Python and as an interactive HTML simulator.",
+    "tecnologias": [
+      { "nombre": "Python (standard library)", "uso": "One class per principle: role-based access control with an audit log, grade integrity, and the impact of a DDoS with a continuity plan." },
+      { "nombre": "hashlib (SHA-256)", "uso": "A hash per academic record detects any change made outside the system; unauthorized changes are rolled back." },
+      { "nombre": "HTML + JavaScript", "uso": "Interactive version to try roles and resources from the browser." },
+      { "nombre": "pytest + ruff", "uso": "16 tests and linting with security rules (bandit) in CI." }
+    ],
+    "decisiones": [
+      "Tests revealed that access control allowed unknown resources (fail-open); it now denies by default.",
+      "An unkeyed hash detects accidental changes, but against an attacker you need an HMAC: documented as a next step."
+    ],
+    "resultado": "CI with ruff, pytest and a full run of the simulation."
+  },
+  {
+    "id": "wiki-sqli",
+    "nombre": "SQL Injection Wiki",
+    "tag": "REACT · CYBERSEC",
+    "lang": "js",
+    "stack": ["React", "Vite", "CSS"],
+    "repo": "https://github.com/Fernandamv96/Wiki-Inyecci-n-Sql-",
+    "demo": "https://wiki-inyecci-n-sql-c96e.vercel.app",
+    "imagen": "assets/proyectos/wiki-sqli.webp",
+    "alt": "Home page of the SQL injection wiki with its learning sections",
+    "problema": "SQL injection is usually explained with code that intimidates beginners, without making it clear how to prevent it.",
+    "solucion": "A wiki with analogies, a simulation that executes nothing and a prevention checklist, designed for students and class presentations.",
+    "tecnologias": [
+      { "nombre": "React + Vite", "uso": "Seven navigable sections, global search with Ctrl/Cmd + K, persistent light/dark mode and PDF export." },
+      { "nombre": "Custom simulator", "uso": "Shows token by token how six classic payloads alter a query, without connecting to any database." },
+      { "nombre": "Responsive CSS", "uso": "Layout for mobile, tablet and desktop without UI libraries." }
+    ],
+    "decisiones": [
+      "Teaching the concept without publishing working offensive material.",
+      "Prevention focuses on parameterized queries; validation and escaping are extra layers."
+    ],
+    "resultado": "CI with ESLint and build, plus CodeQL."
+  },
+  {
+    "id": "turismo",
+    "nombre": "Turismo Extremo Sur",
+    "tag": "HTML · WEB",
+    "lang": "html",
+    "stack": ["HTML", "CSS", "JavaScript", "Vercel"],
+    "repo": "https://github.com/Fernandamv96/turismo-extremo-sur",
+    "demo": "https://turismo-extremo-sur-zeta.vercel.app",
+    "imagen": "assets/proyectos/turismo.webp",
+    "alt": "Turismo Extremo Sur home page with the Cuernos del Paine",
+    "problema": "An adventure tourism agency in Punta Arenas had nowhere to show its routes and prices or to receive booking inquiries.",
+    "solucion": "A fast, dependency-free static site with services, a location map and a validated contact form.",
+    "tecnologias": [
+      { "nombre": "Semantic HTML + CSS", "uso": "Responsive layout with custom properties and a hamburger menu on mobile." },
+      { "nombre": "Vanilla JavaScript", "uso": "Service cards are generated from a data array, the form is validated on the client and animations respect `prefers-reduced-motion`." },
+      { "nombre": "Vercel", "uso": "Deployment with security headers: CSP, X-Frame-Options, Referrer-Policy and Permissions-Policy." }
+    ],
+    "decisiones": [
+      "So the CSP could forbid inline styles, image framing moved from `style=\"...\"` to the CSSOM.",
+      "The translucent navbar over the animated aurora failed AA contrast: it now has a dark background."
+    ],
+    "resultado": "CI with ESLint, html-validate and asset checks; axe-core with no violations."
+  },
+  {
+    "id": "techstore",
+    "nombre": "TechStore Manager",
+    "tag": "FULL STACK · REACT",
+    "lang": "js",
+    "stack": ["React", "Express", "Axios", "Vercel"],
+    "repo": "https://github.com/Fernandamv96/TechStoreManager",
+    "demo": "https://techstore-api-one.vercel.app",
+    "imagen": "assets/proyectos/techstore.webp",
+    "alt": "TechStore Manager dashboard with the product form and inventory metrics",
+    "problema": "A tech store managed its inventory by hand, with no quick view of stock, total value or products to restock.",
+    "solucion": "A full-stack system with a REST API for product CRUD and a React dashboard with real-time inventory metrics.",
+    "tecnologias": [
+      { "nombre": "Express", "uso": "REST API split into routes, controllers and middleware; server-side validation (name, category, price > 0, stock ≥ 0) is the source of truth." },
+      { "nombre": "Custom middleware", "uso": "A logger records the method, path and time of every request." },
+      { "nombre": "React", "uso": "Components (form, table, stats, notifications) with `useState`, `useMemo` for the metrics and `useCallback` for handlers." },
+      { "nombre": "Axios", "uso": "A `services/api.js` layer centralizes requests and turns errors into readable messages for the user." },
+      { "nombre": "Vercel", "uso": "Frontend and API deployed together: rewrites route `/productos` to a serverless function that reuses the Express app." },
+      { "nombre": "node:test", "uso": "6 API tests with no extra dependencies: full CRUD, validation, malformed JSON and headers." }
+    ],
+    "decisiones": [
+      "CORS can be restricted with the `FRONTEND_URL` variable, and the `X-Powered-By` header is gone.",
+      "The error handler no longer returns `err.message` to the client in production.",
+      "`listen()` only runs when the server is started directly, so the app can be tested."
+    ],
+    "resultado": "CI with backend tests, frontend ESLint and build, plus CodeQL."
+  },
+  {
+    "id": "farmacia",
+    "nombre": "Pharmacy Catalog",
+    "tag": "PYTHON · DJANGO",
+    "lang": "py",
+    "stack": ["Python", "Django", "SQLite / PostgreSQL", "Vercel"],
+    "repo": "https://github.com/Fernandamv96/CatalogoFarmacia",
+    "demo": null,
+    "imagen": "assets/proyectos/farmacia.webp",
+    "alt": "Medicine catalog with inventory metrics and expiration status",
+    "problema": "In a pharmacy, expired or soon-to-expire products are caught too late when the inventory lives in a spreadsheet.",
+    "solucion": "A Django CRUD that shows the inventory value, flags products expiring within 30 days or already expired, and rejects products with a past expiration date.",
+    "tecnologias": [
+      { "nombre": "Django (generic views)", "uso": "`ListView`, `CreateView`, `UpdateView` and `DeleteView` cover the CRUD; the list view computes the inventory metrics." },
+      { "nombre": "Django Forms", "uso": "`clean_fecha_vencimiento` rejects past dates before saving." },
+      { "nombre": "ORM + migrations", "uso": "SQLite locally and PostgreSQL through `DATABASE_URL` in production, with no code changes." },
+      { "nombre": "WhiteNoise", "uso": "Serves static files (including the admin) in the serverless environment." },
+      { "nombre": "Vercel", "uso": "On startup, migrations run and the superuser is created from environment variables." },
+      { "nombre": "Django tests", "uso": "Listing, creation, deletion and rejection of expired dates." }
+    ],
+    "decisiones": [
+      "`SECRET_KEY` is required in production: before, if it was missing, an insecure key was used.",
+      "`Secure` cookies, HSTS and `Referrer-Policy` when `DEBUG` is off; CI runs `manage.py check --deploy`."
+    ],
+    "resultado": "CI with ruff, Django tests and deployment checks, plus CodeQL."
+  }
+]
