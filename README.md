@@ -26,6 +26,19 @@ Reúne en una sola página quién soy, mi stack y mis proyectos principales, con
 - **Seguridad**: CSP vía `<meta>` (sin scripts inline), `rel="noopener noreferrer"` en enlaces externos y gitleaks en pre-commit.
 - **Accesibilidad**: enlace "Saltar al contenido", foco visible, contraste AA, landmarks, `prefers-reduced-motion` y tarjetas navegables por teclado.
 
+## Proyectos: problema → solución → cómo usé cada tecnología
+
+Cada proyecto se presenta como un caso breve: **el problema**, **la solución**, el stack y un desplegable *"Cómo lo construí"* con el rol concreto de cada tecnología y las decisiones de seguridad.
+
+El contenido vive en `data/proyectos.json`. Para editarlo:
+
+```bash
+# 1. edita data/proyectos.json
+npm run proyectos   # regenera las tarjetas dentro de index.html (HTML estático, sin JS)
+```
+
+El CI falla si `index.html` no está sincronizado con el JSON.
+
 ## Lighthouse
 
 Medido en local (Lighthouse 12, perfil móvil):
@@ -58,7 +71,9 @@ Sin `data.json`, la sección de estadísticas muestra el texto alternativo. Es e
 │   ├── fonts/                 # Anton, Inter, JetBrains Mono (woff2, OFL)
 │   ├── og-image.png           # 1200×630
 │   └── favicon.svg
+├── data/proyectos.json        # contenido de los casos de proyecto
 ├── scripts/build-data.mjs     # genera data.json en el build
+├── scripts/build-proyectos.mjs # JSON → tarjetas en index.html
 ├── sitemap.xml · robots.txt
 └── .github/workflows/         # deploy (Pages), CI (lint + Lighthouse), CodeQL
 ```
