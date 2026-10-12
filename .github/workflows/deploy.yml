@@ -1,0 +1,54 @@
+name: Deploy a GitHub Pages
+
+# Genera data.json desde la API de GitHub (con token: sin límite de rate del cliente)
+# y publica el sitio. Requiere: Settings → Pages → Source: "GitHub Actions".
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 6 * * *' # diario: mantiene las estadísticas al día
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Armar el sitio
+        run: |
+          mkdir -p _site
+          cp -r index.html styles.css robots.txt sitemap.xml assets _site/
+
+      - name: Generar data.json
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # Si la API falla, el sitio se publica igual y muestra el fallback sin números
+        run: node scripts/build-data.mjs _site/data.json || echo "::warning::No se pudo generar data.json"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
