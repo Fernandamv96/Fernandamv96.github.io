@@ -1224,3 +1224,15 @@ ul.learning-row,
 .case-more a { color: var(--color-neon-cyan); border-bottom: 1px dashed currentColor; }
 
 .case { scroll-margin-top: 96px; }
+
+.case-thumb {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+  border-radius: var(--radius-cards);
+  border: 1px solid var(--surface-line);
+  background: var(--surface-deep);
+}
