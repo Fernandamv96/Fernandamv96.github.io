@@ -224,103 +224,286 @@
     <section class="section" id="work" aria-label="Proyectos">
       <p class="eyebrow">`&gt; proyectos`</p>
       <h2 class="heading" id="work-title">A NEW ANGLE<br />OF CODE</h2>
-      <p class="section-sub">Una selección de mis repos públicos, cada uno con README, licencia y CI.</p>
+      <p class="section-sub">Para cada proyecto: qué problema resuelve, cómo usé cada tecnología y qué decisiones de seguridad tomé.</p>
 
-      <div class="project-grid">
-        <article class="project-card">
+      <div class="project-grid case-grid">
+        <!-- proyectos:inicio -->
+        <article class="case" id="proyecto-clinica" aria-labelledby="proyecto-clinica-titulo">
           <div class="project-head">
             <span class="project-tag">JAVA · API REST</span>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-          <h3 class="project-title"><a class="card-link" href="https://github.com/Fernandamv96/Clinica-registro-pacientes" target="_blank" rel="noopener noreferrer">Clínica registro pacientes</a></h3>
-          <p class="project-desc">API de pacientes e historial clínico con JWT, roles, Flyway y Docker.</p>
-          <div class="project-foot">
             <span class="lang-dot lang-java" aria-hidden="true"></span>
-            <span>Java · Spring Boot</span>
+          </div>
+          <h3 class="project-title" id="proyecto-clinica-titulo">Clínica: registro de pacientes</h3>
+          <dl class="case-summary">
+            <div><dt>El problema</dt><dd>Llevar pacientes e historial clínico en planillas expone datos sensibles y no controla quién puede ver o modificar cada registro.</dd></div>
+            <div><dt>La solución</dt><dd>Una API REST con autenticación, tres roles (admin, médico y recepción) y validación del RUT chileno: recepción registra pacientes, los médicos escriben el historial y solo admin gestiona usuarios.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>Java 21</li><li>Spring Boot</li><li>PostgreSQL</li><li>Docker</li></ul>
+          <details class="case-details">
+            <summary>Cómo lo construí</summary>
+            <div class="case-body">
+              <div>
+                <h4>Cómo usé cada tecnología</h4>
+                <dl class="case-tech">
+                  <dt>Spring Boot 3</dt>
+                  <dd>Estructura en capas (controller → service → repository), DTOs y un manejador global de errores con respuestas consistentes.</dd>
+                  <dt>Spring Security + JWT</dt>
+                  <dd>El login entrega un token y cada endpoint exige un rol con <code>@PreAuthorize</code>; las contraseñas se guardan con BCrypt.</dd>
+                  <dt>PostgreSQL + Flyway</dt>
+                  <dd>El esquema vive en migraciones versionadas (tablas, índices y datos de desarrollo), así la base se recrea igual en cualquier entorno.</dd>
+                  <dt>Spring Data JPA</dt>
+                  <dd>Búsqueda paginada de pacientes por RUT, nombre o email sin escribir SQL a mano.</dd>
+                  <dt>Docker Compose</dt>
+                  <dd>Levanta API y PostgreSQL con un comando; imagen multi-stage con usuario no-root, y Compose se detiene si falta un secreto.</dd>
+                  <dt>JUnit 5 + Mockito</dt>
+                  <dd>22 tests: validador de RUT, servicio de pacientes y un test de regresión de seguridad.</dd>
+                  <dt>SpringDoc OpenAPI</dt>
+                  <dd>Swagger UI para documentar y probar cada endpoint.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisiones y seguridad</h4>
+                <ul class="case-decisions">
+                  <li>Detecté que el registro de usuarios era público y permitía crearse una cuenta ADMIN: ahora solo un admin puede registrar usuarios, con un test que lo comprueba.</li>
+                  <li>Sin credenciales ni JWT secret por defecto: todo se lee de variables de entorno (<code>.env.example</code>).</li>
+                  <li>El admin inicial se crea desde una variable de entorno y su contraseña ya no se imprime en los logs.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI con <code>mvn verify</code>, build de Docker y CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Clinica-registro-pacientes" target="_blank" rel="noopener noreferrer">código ↗<span class="sr-only"> de Clínica: registro de pacientes</span></a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="case" id="proyecto-mediform" aria-labelledby="proyecto-mediform-titulo">
           <div class="project-head">
             <span class="project-tag">PYTHON · WEB</span>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-          <h3 class="project-title"><a class="card-link" href="https://github.com/Fernandamv96/Formulario-Cl-nico-" target="_blank" rel="noopener noreferrer">MediForm</a></h3>
-          <p class="project-desc">Ficha clínica digital con validación doble, CSRF, CSP y tests con pytest.</p>
-          <div class="project-foot">
             <span class="lang-dot lang-py" aria-hidden="true"></span>
-            <span>Python · Flask</span>
+          </div>
+          <h3 class="project-title" id="proyecto-mediform-titulo">MediForm</h3>
+          <dl class="case-summary">
+            <div><dt>El problema</dt><dd>En una ficha de consulta en papel quedan campos sin llenar, los signos vitales alterados pasan desapercibidos y buscar una consulta anterior toma tiempo.</dd></div>
+            <div><dt>La solución</dt><dd>Un formulario clínico por secciones con validación en el cliente y en el servidor, alertas cuando un signo vital sale de rango, cálculo automático de edad e IMC y búsqueda por nombre o documento.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>Python</li><li>Flask</li><li>SQLite</li><li>pytest</li></ul>
+          <details class="case-details">
+            <summary>Cómo lo construí</summary>
+            <div class="case-body">
+              <div>
+                <h4>Cómo usé cada tecnología</h4>
+                <dl class="case-tech">
+                  <dt>Flask + Jinja2</dt>
+                  <dd>Rutas, plantillas y filtros propios (edad, IMC y estado de cada signo vital) usados directamente en el HTML.</dd>
+                  <dt>SQLite</dt>
+                  <dd>Persistencia sin servidor externo; todas las consultas van parametrizadas con <code>?</code>.</dd>
+                  <dt>Flask-WTF</dt>
+                  <dd>Protección CSRF en todos los formularios que envían datos.</dd>
+                  <dt>JavaScript vanilla</dt>
+                  <dd>Validación en vivo y confirmación de borrado sin scripts inline, compatible con una CSP estricta.</dd>
+                  <dt>pytest</dt>
+                  <dd>19 tests: creación de consultas, campos obligatorios, rechazo sin token CSRF, headers de seguridad y configuración.</dd>
+                  <dt>gunicorn</dt>
+                  <dd>Servidor de producción para el despliegue (Procfile).</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisiones y seguridad</h4>
+                <ul class="case-decisions">
+                  <li>Debug apagado por defecto y servidor en 127.0.0.1: <code>debug=True</code> en 0.0.0.0 expone la consola de Werkzeug a la red.</li>
+                  <li>La app no arranca en producción sin <code>SECRET_KEY</code>.</li>
+                  <li>Headers CSP, X-Frame-Options, X-Content-Type-Options y Referrer-Policy en todas las respuestas.</li>
+                  <li>Proyecto educativo: no está pensado para datos clínicos reales.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI con ruff y pytest en Python 3.10 y 3.12, más CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Formulario-Cl-nico-" target="_blank" rel="noopener noreferrer">código ↗<span class="sr-only"> de MediForm</span></a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="case" id="proyecto-infografia" aria-labelledby="proyecto-infografia-titulo">
           <div class="project-head">
             <span class="project-tag">REACT · CYBERSEC</span>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-          <h3 class="project-title"><a class="card-link" href="https://github.com/Fernandamv96/Infografia-.banco" target="_blank" rel="noopener noreferrer">Infografía Banco de Chile</a></h3>
-          <p class="project-desc">El ciberataque de 2018 explicado con la tríada CIA, con fuentes verificadas.</p>
-          <div class="project-foot">
             <span class="lang-dot lang-js" aria-hidden="true"></span>
-            <span>JavaScript · React</span>
-            <a class="project-demo" href="https://fernandamv96.github.io/Infografia-.banco/" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> de la infografía</span></a>
+          </div>
+          <h3 class="project-title" id="proyecto-infografia-titulo">Infografía: ataque al Banco de Chile 2018</h3>
+          <dl class="case-summary">
+            <div><dt>El problema</dt><dd>Los incidentes reales se estudian con textos largos y, muchas veces, con datos que nadie verificó.</dd></div>
+            <div><dt>La solución</dt><dd>Una infografía interactiva que explica el ataque con la tríada CIA y marca cada afirmación como documentada, hipótesis o no confirmada, con sus fuentes.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>React</li><li>Vite</li><li>CSS</li><li>GitHub Pages</li></ul>
+          <details class="case-details">
+            <summary>Cómo lo construí</summary>
+            <div class="case-body">
+              <div>
+                <h4>Cómo usé cada tecnología</h4>
+                <dl class="case-tech">
+                  <dt>React</dt>
+                  <dd>Componentes reutilizables: cronología desplegable, pestañas de la tríada CIA y filtro vulnerabilidad → medidas que la mitigan.</dd>
+                  <dt>JSON + node:test</dt>
+                  <dd>Todo el contenido vive en un JSON y los tests verifican que cada referencia a una fuente y cada vínculo vulnerabilidad → medida existan.</dd>
+                  <dt>Vite + GitHub Actions</dt>
+                  <dd>Build de producción y despliegue automático en GitHub Pages en cada push.</dd>
+                  <dt>WAI-ARIA</dt>
+                  <dd>Pestañas navegables con flechas, acordeón con <code>aria-expanded</code> y filtros con <code>aria-pressed</code> y <code>aria-live</code>.</dd>
+                  <dt>CSS propio</dt>
+                  <dd>Estética terminal, estilos de impresión para exportar a PDF y <code>prefers-reduced-motion</code>.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisiones y seguridad</h4>
+                <ul class="case-decisions">
+                  <li>Contrastar fuentes corrigió la versión original: el malware fue un wiper (KillDisk), no WannaCry, y se quitaron cifras sin respaldo.</li>
+                  <li>Verificada con axe-core: 0 violaciones WCAG 2.1 AA.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI con ESLint, tests de datos y build, más CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Infografia-.banco" target="_blank" rel="noopener noreferrer">código ↗<span class="sr-only"> de Infografía: ataque al Banco de Chile 2018</span></a>
+              <a class="case-link case-link-demo" href="https://fernandamv96.github.io/Infografia-.banco/" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> de Infografía: ataque al Banco de Chile 2018</span></a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="case" id="proyecto-auditoria-cia" aria-labelledby="proyecto-auditoria-cia-titulo">
           <div class="project-head">
             <span class="project-tag">CYBERSEC · CIA</span>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-          <h3 class="project-title"><a class="card-link" href="https://github.com/Fernandamv96/Fundamentos-de-la-seguridad-de-la-info-" target="_blank" rel="noopener noreferrer">Auditoría CIA</a></h3>
-          <p class="project-desc">Simulación de controles de confidencialidad, integridad y disponibilidad para los sistemas de INACAP.</p>
-          <div class="project-foot">
             <span class="lang-dot lang-py" aria-hidden="true"></span>
-            <span>Python · HTML</span>
+          </div>
+          <h3 class="project-title" id="proyecto-auditoria-cia-titulo">Auditoría CIA</h3>
+          <dl class="case-summary">
+            <div><dt>El problema</dt><dd>¿Cómo evitar que un alumno vea datos sensibles de otros, que altere sus notas o que una caída de los sistemas arruine la semana de exámenes?</dd></div>
+            <div><dt>La solución</dt><dd>Una simulación de controles para cada principio de la tríada CIA en los sistemas de INACAP, en Python y como simulador interactivo en HTML.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>Python</li><li>hashlib</li><li>HTML</li><li>pytest</li></ul>
+          <details class="case-details">
+            <summary>Cómo lo construí</summary>
+            <div class="case-body">
+              <div>
+                <h4>Cómo usé cada tecnología</h4>
+                <dl class="case-tech">
+                  <dt>Python (biblioteca estándar)</dt>
+                  <dd>Una clase por principio: control de acceso por roles con log de auditoría, integridad de notas e impacto de un DDoS con plan de continuidad.</dd>
+                  <dt>hashlib (SHA-256)</dt>
+                  <dd>Un hash por registro académico detecta cualquier cambio hecho por fuera del sistema; los cambios no autorizados se revierten.</dd>
+                  <dt>HTML + JavaScript</dt>
+                  <dd>Versión interactiva para probar roles y recursos desde el navegador.</dd>
+                  <dt>pytest + ruff</dt>
+                  <dd>16 tests y lint con reglas de seguridad (bandit) en CI.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisiones y seguridad</h4>
+                <ul class="case-decisions">
+                  <li>Los tests revelaron que el control de acceso permitía recursos desconocidos (fail-open); ahora deniega por defecto.</li>
+                  <li>Un hash sin clave detecta cambios accidentales, pero contra un atacante haría falta un HMAC: queda documentado como mejora.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI con ruff, pytest y ejecución completa de la simulación.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Fundamentos-de-la-seguridad-de-la-info-" target="_blank" rel="noopener noreferrer">código ↗<span class="sr-only"> de Auditoría CIA</span></a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="case" id="proyecto-wiki-sqli" aria-labelledby="proyecto-wiki-sqli-titulo">
           <div class="project-head">
             <span class="project-tag">REACT · CYBERSEC</span>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-          <h3 class="project-title"><a class="card-link" href="https://github.com/Fernandamv96/Wiki-Inyecci-n-Sql-" target="_blank" rel="noopener noreferrer">Wiki Inyección SQL</a></h3>
-          <p class="project-desc">Wiki educativa sobre SQLi, con simulación segura de payloads y guía de prevención.</p>
-          <div class="project-foot">
             <span class="lang-dot lang-js" aria-hidden="true"></span>
-            <span>JavaScript · React</span>
-            <a class="project-demo" href="https://wiki-inyecci-n-sql-c96e.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> de la wiki</span></a>
+          </div>
+          <h3 class="project-title" id="proyecto-wiki-sqli-titulo">Wiki de Inyección SQL</h3>
+          <dl class="case-summary">
+            <div><dt>El problema</dt><dd>La inyección SQL se suele explicar con código que intimida a quien empieza, y sin dejar claro cómo se previene.</dd></div>
+            <div><dt>La solución</dt><dd>Una wiki con analogías, una simulación que no ejecuta nada y un checklist de prevención, pensada para estudiantes y exposiciones.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>React</li><li>Vite</li><li>CSS</li></ul>
+          <details class="case-details">
+            <summary>Cómo lo construí</summary>
+            <div class="case-body">
+              <div>
+                <h4>Cómo usé cada tecnología</h4>
+                <dl class="case-tech">
+                  <dt>React + Vite</dt>
+                  <dd>Siete secciones navegables, búsqueda global con Ctrl/Cmd + K, modo claro/oscuro persistente y exportación a PDF.</dd>
+                  <dt>Simulador propio</dt>
+                  <dd>Muestra token a token cómo seis payloads clásicos alteran una consulta, sin conectarse a ninguna base de datos.</dd>
+                  <dt>CSS responsive</dt>
+                  <dd>Diseño para móvil, tablet y escritorio sin librerías de UI.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisiones y seguridad</h4>
+                <ul class="case-decisions">
+                  <li>Enseñar el concepto sin publicar material ofensivo funcional.</li>
+                  <li>La prevención se centra en consultas parametrizadas; la validación y el escape son capas extra.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI con ESLint y build, más CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Wiki-Inyecci-n-Sql-" target="_blank" rel="noopener noreferrer">código ↗<span class="sr-only"> de Wiki de Inyección SQL</span></a>
+              <a class="case-link case-link-demo" href="https://wiki-inyecci-n-sql-c96e.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> de Wiki de Inyección SQL</span></a>
           </div>
         </article>
 
-        <article class="project-card">
+        <article class="case" id="proyecto-turismo" aria-labelledby="proyecto-turismo-titulo">
           <div class="project-head">
             <span class="project-tag">HTML · WEB</span>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-          <h3 class="project-title"><a class="card-link" href="https://github.com/Fernandamv96/turismo-extremo-sur" target="_blank" rel="noopener noreferrer">Turismo extremo sur</a></h3>
-          <p class="project-desc">Sitio para una agencia de turismo aventura en Punta Arenas, con headers de seguridad y accesibilidad AA.</p>
-          <div class="project-foot">
             <span class="lang-dot lang-html" aria-hidden="true"></span>
-            <span>HTML · CSS · JS</span>
-            <a class="project-demo" href="https://turismo-extremo-sur-zeta.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> del sitio de turismo</span></a>
+          </div>
+          <h3 class="project-title" id="proyecto-turismo-titulo">Turismo Extremo Sur</h3>
+          <dl class="case-summary">
+            <div><dt>El problema</dt><dd>Una agencia de turismo aventura de Punta Arenas no tenía dónde mostrar sus rutas y precios ni cómo recibir consultas de reserva.</dd></div>
+            <div><dt>La solución</dt><dd>Un sitio estático rápido, sin dependencias, con servicios, mapa de ubicación y formulario de contacto validado.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Vercel</li></ul>
+          <details class="case-details">
+            <summary>Cómo lo construí</summary>
+            <div class="case-body">
+              <div>
+                <h4>Cómo usé cada tecnología</h4>
+                <dl class="case-tech">
+                  <dt>HTML semántico + CSS</dt>
+                  <dd>Layout responsive con custom properties y menú hamburguesa en móvil.</dd>
+                  <dt>JavaScript vanilla</dt>
+                  <dd>Las tarjetas de servicios se generan desde un arreglo de datos, el formulario se valida en el cliente y las animaciones respetan <code>prefers-reduced-motion</code>.</dd>
+                  <dt>Vercel</dt>
+                  <dd>Despliegue con headers de seguridad: CSP, X-Frame-Options, Referrer-Policy y Permissions-Policy.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisiones y seguridad</h4>
+                <ul class="case-decisions">
+                  <li>Para que la CSP prohíba estilos inline, el encuadre de las imágenes pasó de <code>style=&quot;...&quot;</code> a CSSOM.</li>
+                  <li>El navbar translúcido sobre la aurora animada no cumplía el contraste AA: se le dio fondo oscuro.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI con ESLint, html-validate y verificación de recursos; axe-core sin violaciones.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/turismo-extremo-sur" target="_blank" rel="noopener noreferrer">código ↗<span class="sr-only"> de Turismo Extremo Sur</span></a>
+              <a class="case-link case-link-demo" href="https://turismo-extremo-sur-zeta.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> de Turismo Extremo Sur</span></a>
           </div>
         </article>
-
-        <article class="project-card">
-          <div class="project-head">
-            <span class="project-tag">+ MÁS</span>
-            <span class="project-arrow" aria-hidden="true">↗</span>
-          </div>
-          <h3 class="project-title"><a class="card-link" href="https://github.com/Fernandamv96?tab=repositories" target="_blank" rel="noopener noreferrer">Ver todos los repos</a></h3>
-          <p class="project-desc">Evaluaciones, prácticas y experimentos en GitHub.</p>
-          <div class="project-foot">
-            <span class="lang-dot lang-mix" aria-hidden="true"></span>
-            <span>github.com/Fernandamv96</span>
-          </div>
-        </article>
+        <!-- proyectos:fin -->
       </div>
+      <p class="case-more">
+        <a href="https://github.com/Fernandamv96?tab=repositories" target="_blank" rel="noopener noreferrer">Ver todos mis repositorios en GitHub ↗</a>
+      </p>
     </section>
 
     <hr class="dotted" />
