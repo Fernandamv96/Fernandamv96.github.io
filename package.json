@@ -1,0 +1,19 @@
+{
+  "name": "fernandamv96-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Portafolio personal de Fernanda (Ferr): sitio estático + data.json generado en el build",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint assets/js scripts && html-validate index.html",
+    "data": "node scripts/build-data.mjs data.json",
+    "start": "npx --yes serve@14 -l 8000 ."
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.39.5",
+    "eslint": "^9.39.5",
+    "globals": "^15.15.0",
+    "html-validate": "^9.7.1"
+  }
+}
