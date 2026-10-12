@@ -31,7 +31,7 @@ jobs:
       - name: Armar el sitio
         run: |
           mkdir -p _site
-          cp -r index.html styles.css robots.txt sitemap.xml assets _site/
+          cp -r index.html en styles.css robots.txt sitemap.xml assets _site/
 
       - name: Generar data.json
         env:

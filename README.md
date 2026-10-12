@@ -30,14 +30,18 @@ Reúne en una sola página quién soy, mi stack y mis proyectos principales, con
 
 Cada proyecto se presenta como un caso breve: **el problema**, **la solución**, el stack y un desplegable *"Cómo lo construí"* con el rol concreto de cada tecnología y las decisiones de seguridad.
 
-El contenido vive en `data/proyectos.json`. Para editarlo:
+El contenido vive en `data/proyectos.json` (español) y `data/proyectos.en.json` (inglés). Para editarlo:
 
 ```bash
-# 1. edita data/proyectos.json
-npm run proyectos   # regenera las tarjetas dentro de index.html (HTML estático, sin JS)
+# 1. edita los JSON (mantén los mismos "id" en ambos idiomas)
+npm run proyectos   # regenera las tarjetas en index.html y en/index.html (HTML estático, sin JS)
 ```
 
-El CI falla si `index.html` no está sincronizado con el JSON.
+El CI falla si las páginas no están sincronizadas con los JSON.
+
+## Versión en inglés
+
+`/en/` es la versión en inglés para postulaciones internacionales, con selector ES/EN en el header, `hreflang` en ambas páginas y `sitemap.xml` con las alternativas. Los textos fijos de `en/index.html` se editan a mano; las tarjetas de proyectos se generan desde `data/proyectos.en.json`.
 
 ## Lighthouse
 
@@ -64,14 +68,16 @@ Sin `data.json`, la sección de estadísticas muestra el texto alternativo. Es e
 ## Estructura
 
 ```text
-├── index.html                 # página única
+├── index.html                 # página en español
+├── en/index.html              # versión en inglés
 ├── styles.css                 # design tokens + componentes
 ├── assets/
 │   ├── js/main.js             # scroll suave + carga de data.json
 │   ├── fonts/                 # Anton, Inter, JetBrains Mono (woff2, OFL)
 │   ├── og-image.png           # 1200×630
 │   └── favicon.svg
-├── data/proyectos.json        # contenido de los casos de proyecto
+├── data/proyectos.json        # casos de proyecto (ES)
+├── data/proyectos.en.json     # casos de proyecto (EN)
 ├── scripts/build-data.mjs     # genera data.json en el build
 ├── scripts/build-proyectos.mjs # JSON → tarjetas en index.html
 ├── sitemap.xml · robots.txt
