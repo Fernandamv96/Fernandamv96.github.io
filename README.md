@@ -1,183 +1,79 @@
 <div align="center">
 
-# 🌐 ferr.dev
+# 🌐 ferr · portfolio
 
 ### Personal portfolio · Programming & Cybersecurity
 
-[![Live Site](https://img.shields.io/badge/🌐_live_site-fernandamv96.github.io-00f0ff?style=for-the-badge&logo=githubpages&logoColor=00f0ff&labelColor=050510)](https://fernandamv96.github.io)
-[![GitHub Pages](https://img.shields.io/badge/deployed_with-GitHub_Pages-ff2bd6?style=for-the-badge&logo=github&logoColor=ff2bd6&labelColor=050510)](https://pages.github.com)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![License: MIT](https://img.shields.io/badge/license-MIT-b5ff3a?style=for-the-badge&labelColor=050510)](LICENSE)
-
-<br/>
-
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=22&pause=1000&color=00F0FF&center=true&vCenter=true&width=600&lines=programming+%C3%97+cybersecurity;ctf+%C3%97+hacking+%C3%A9tico;aprendiendo+siempre..." alt="Typing SVG" />
+[![Deploy](https://github.com/Fernandamv96/Fernandamv96.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/Fernandamv96/Fernandamv96.github.io/actions/workflows/deploy.yml)
+[![CI](https://github.com/Fernandamv96/Fernandamv96.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/Fernandamv96/Fernandamv96.github.io/actions/workflows/ci.yml)
+[![Live Site](https://img.shields.io/badge/live-fernandamv96.github.io-00f0ff?style=flat-square&logo=githubpages&logoColor=00f0ff&labelColor=050510)](https://fernandamv96.github.io)
+[![License: MIT](https://img.shields.io/badge/license-MIT-b5ff3a?style=flat-square&labelColor=050510)](LICENSE)
 
 </div>
 
----
+![Vista previa del portafolio](assets/og-image.png)
 
-## ✦ Preview
+## ¿Qué problema resuelve?
 
-A single-page, no-build portfolio built from scratch in semantic HTML and a custom CSS design system. The look is **neon tech** — pure-black canvas, cyan/magenta/lime glow, oversized display type, and a circuit-board grid underneath everything.
+Reúne en una sola página quién soy, mi stack y mis proyectos principales, con estadísticas **reales y actualizadas** de GitHub. Está pensado para que reclutadores y docentes encuentren rápido el código y las demos.
 
-> 🟢 **Live →** [fernandamv96.github.io](https://fernandamv96.github.io)
+## Características
 
----
+- **Estética neón tech**: canvas negro, grid de circuito y acentos cian/magenta/lima, con tipografía display.
+- **Estadísticas propias**: un GitHub Action genera `data.json` desde la API pública de GitHub en cada deploy y una vez al día. Si falla, el sitio muestra un texto alternativo sin números.
+- **Sin dependencias en runtime**: HTML + CSS + JS vanilla, con fuentes servidas desde el propio sitio.
+- **SEO y redes**: Open Graph y Twitter Card (imagen 1200×630), canonical, `sitemap.xml`, `robots.txt` y JSON-LD.
+- **Seguridad**: CSP vía `<meta>` (sin scripts inline), `rel="noopener noreferrer"` en enlaces externos y gitleaks en pre-commit.
+- **Accesibilidad**: enlace "Saltar al contenido", foco visible, contraste AA, landmarks, `prefers-reduced-motion` y tarjetas navegables por teclado.
 
-## ✦ Features
+## Lighthouse
 
-| | |
-|---|---|
-| 🖤 **Pure-black canvas** with circuit-grid background + scanline overlay |
-| 💡 **Neon glow system** — cyan, magenta, lime, violet as the only chromatic accents |
-| 🔤 **Display typography** at 100–213px, tight tracking, terminal-style mono micro-copy |
-| 📱 **Responsive** down to ~360px — nav collapses, portrait re-anchors, grids reflow |
-| ⚡ **Zero build step** — open `index.html` and it works, no `node_modules`, no bundler |
-| 🎨 **Custom design tokens** in `:root` for colors, fonts, radii, spacing, glows |
-| 🔍 **Smooth scroll** between sections via vanilla JS, no framework |
-| 📊 **Live GitHub stats** embedded from `github-readme-stats` |
+Medido en local (Lighthouse 12, perfil móvil):
 
----
+| | Performance | Accessibility | Best Practices | SEO |
+|---|:---:|:---:|:---:|:---:|
+| Antes | 79 | 96 | 100 | 100 |
+| Después | 99 | 100 | 100 | 100 |
 
-## ✦ Tech Stack
+El CI ejecuta Lighthouse CI en cada PR y **falla si alguna categoría baja de 95**.
 
-<div align="center">
-
-| Layer | Technology |
-|---|---|
-| Markup | ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) Semantic HTML5 |
-| Styling | ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) Custom design system, no framework |
-| Typography | ![Google Fonts](https://img.shields.io/badge/Google_Fonts-Anton_+_Inter_+_JetBrains_Mono-4285F4?style=flat-square&logo=googlefonts&logoColor=white) |
-| Hosting | ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222222?style=flat-square&logo=githubpages&logoColor=white) |
-| Versioning | ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) |
-
-</div>
-
----
-
-## ✦ Project Structure
-
-```
-Fernandamv96.github.io/
-├── index.html      # Semantic markup, all 7 sections
-├── styles.css      # Design tokens + components (~870 lines)
-├── README.md       # This file
-└── LICENSE         # MIT
-```
-
-No nested folders. No build output. Just two files and a doc.
-
----
-
-## ✦ Sections
-
-```
-> home       →  Hero with massive type + live terminal prompt
-> whoami     →  Ferr.txt code-card with profile facts
-> stack      →  JavaScript · Python · HTML5 · CSS3 · Linux · Git
-> learning   →  Python · JS · Linux · CTF/Hacking · HTML/CSS · Networking
-> proyectos  →  6 featured repositories
-> stats      →  Live GitHub stats + contribution streak
-> contacto   →  Email · GitHub · Spotify
-```
-
----
-
-## ✦ Local Preview
-
-No install required. Just open the file:
+## Cómo correrlo localmente
 
 ```bash
-# Option 1 — open directly
-open index.html          # macOS
-xdg-open index.html      # Linux
-start index.html         # Windows
-
-# Option 2 — local server (recommended for true preview)
-python3 -m http.server 8000
-# then visit http://localhost:8000
-
-# Option 3 — VS Code Live Server extension
-# right-click index.html → "Open with Live Server"
+npm ci
+npm run data      # genera data.json desde la API de GitHub (opcional)
+npm start         # http://localhost:8000
+npm run lint      # ESLint + html-validate
 ```
 
----
+Sin `data.json`, la sección de estadísticas muestra el texto alternativo. Es el comportamiento esperado.
 
-## ✦ Deployment
+## Estructura
 
-Deployed automatically via **GitHub Pages** from the `main` branch. Every push to `main` triggers a rebuild (~30 seconds).
-
-```bash
-git add .
-git commit -m "update portfolio"
-git push origin main
-# → https://fernandamv96.github.io updates within ~1 min
+```text
+├── index.html                 # página única
+├── styles.css                 # design tokens + componentes
+├── assets/
+│   ├── js/main.js             # scroll suave + carga de data.json
+│   ├── fonts/                 # Anton, Inter, JetBrains Mono (woff2, OFL)
+│   ├── og-image.png           # 1200×630
+│   └── favicon.svg
+├── scripts/build-data.mjs     # genera data.json en el build
+├── sitemap.xml · robots.txt
+└── .github/workflows/         # deploy (Pages), CI (lint + Lighthouse), CodeQL
 ```
 
-Setup reference:
-- **Settings → Pages → Source:** Deploy from a branch
-- **Branch:** `main` · `/ (root)`
-- **Enforce HTTPS:** ✅
+## Deploy
 
----
+El workflow `deploy.yml` arma `_site/`, genera `data.json` y publica en GitHub Pages. Requiere **Settings → Pages → Source: GitHub Actions**.
 
-## ✦ Design Tokens
+## Qué aprendí
 
-The whole color system lives in CSS custom properties:
+- Que las cifras escritas a mano envejecen rápido: los datos tienen que venir de una fuente.
+- A medir antes de optimizar. La fuente bloqueante de Google y un elemento decorativo fijo explicaban casi toda la pérdida de rendimiento (CLS 0.227 → 0).
+- A aplicar una CSP en un sitio estático y lo que eso implica (nada de scripts inline).
+- Que la accesibilidad también es estructura: landmarks únicos, foco visible y enlaces que no se anidan.
 
-```css
-:root {
-  /* Surfaces */
-  --surface-void:    #050510;  /* page canvas */
-  --surface-card:    #0c0c1a;  /* cards, code blocks */
-  --surface-deep:    #07070f;  /* deepest, button-on-hover */
+## Licencia
 
-  /* Neon accents */
-  --color-neon-cyan:    #00f0ff;  /* primary — buttons, headings */
-  --color-neon-magenta: #ff2bd6;  /* secondary — outline type, CTF */
-  --color-neon-lime:    #b5ff3a;  /* tertiary — status, learning */
-  --color-neon-violet:  #8a5cff;  /* quaternary — stat numbers */
-
-  /* Glow tokens */
-  --glow-cyan:    0 0 12px rgba(0, 240, 255, 0.45), 0 0 28px rgba(0, 240, 255, 0.18);
-  --glow-magenta: 0 0 12px rgba(255, 43, 214, 0.45), 0 0 28px rgba(255, 43, 214, 0.18);
-}
-```
-
-Swap one variable, the whole site re-themes.
-
----
-
-## ✦ Roadmap
-
-- [ ] Add Open Graph image for social-share previews
-- [ ] Migrate GitHub stats to a self-hosted endpoint (avoid 3rd-party rate limits)
-- [ ] Add Spanish/English language toggle
-- [ ] Project detail pages for the 6 featured repos
-- [ ] Blog section (Markdown-driven)
-
----
-
-## ✦ Author
-
-<div align="center">
-
-**Fernanda · `Ferr`**
-
-Estudiante de **Programación y Ciberseguridad** @ INACAP
-
-[![GitHub](https://img.shields.io/badge/GitHub-@Fernandamv96-00f0ff?style=for-the-badge&logo=github&logoColor=00f0ff&labelColor=050510)](https://github.com/Fernandamv96)
-[![Gmail](https://img.shields.io/badge/Email-[correo eliminado]-ff2bd6?style=for-the-badge&logo=gmail&logoColor=ff2bd6&labelColor=050510)](mailto:[correo eliminado])
-[![Spotify](https://img.shields.io/badge/Spotify-3172sdkmnqoucgtdmsmun6nl6xf4-b5ff3a?style=for-the-badge&logo=spotify&logoColor=b5ff3a&labelColor=050510)](https://open.spotify.com/user/3172sdkmnqoucgtdmsmun6nl6xf4)
-
-</div>
-
----
-
-<div align="center">
-
-<sub>Built with 🖤 by a human who likes CTFs and pixel art. No frameworks harmed.</sub>
-
-</div>
+Código bajo [MIT](LICENSE) © 2026 Fernanda (Fernandamv96). Fuentes bajo SIL OFL 1.1 ([detalle](assets/fonts/LICENSES.md)).
