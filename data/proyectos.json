@@ -1,0 +1,141 @@
+[
+  {
+    "id": "clinica",
+    "nombre": "Clínica: registro de pacientes",
+    "tag": "JAVA · API REST",
+    "lang": "java",
+    "stack": ["Java 21", "Spring Boot", "PostgreSQL", "Docker"],
+    "repo": "https://github.com/Fernandamv96/Clinica-registro-pacientes",
+    "demo": null,
+    "problema": "Llevar pacientes e historial clínico en planillas expone datos sensibles y no controla quién puede ver o modificar cada registro.",
+    "solucion": "Una API REST con autenticación, tres roles (admin, médico y recepción) y validación del RUT chileno: recepción registra pacientes, los médicos escriben el historial y solo admin gestiona usuarios.",
+    "tecnologias": [
+      { "nombre": "Spring Boot 3", "uso": "Estructura en capas (controller → service → repository), DTOs y un manejador global de errores con respuestas consistentes." },
+      { "nombre": "Spring Security + JWT", "uso": "El login entrega un token y cada endpoint exige un rol con `@PreAuthorize`; las contraseñas se guardan con BCrypt." },
+      { "nombre": "PostgreSQL + Flyway", "uso": "El esquema vive en migraciones versionadas (tablas, índices y datos de desarrollo), así la base se recrea igual en cualquier entorno." },
+      { "nombre": "Spring Data JPA", "uso": "Búsqueda paginada de pacientes por RUT, nombre o email sin escribir SQL a mano." },
+      { "nombre": "Docker Compose", "uso": "Levanta API y PostgreSQL con un comando; imagen multi-stage con usuario no-root, y Compose se detiene si falta un secreto." },
+      { "nombre": "JUnit 5 + Mockito", "uso": "22 tests: validador de RUT, servicio de pacientes y un test de regresión de seguridad." },
+      { "nombre": "SpringDoc OpenAPI", "uso": "Swagger UI para documentar y probar cada endpoint." }
+    ],
+    "decisiones": [
+      "Detecté que el registro de usuarios era público y permitía crearse una cuenta ADMIN: ahora solo un admin puede registrar usuarios, con un test que lo comprueba.",
+      "Sin credenciales ni JWT secret por defecto: todo se lee de variables de entorno (`.env.example`).",
+      "El admin inicial se crea desde una variable de entorno y su contraseña ya no se imprime en los logs."
+    ],
+    "resultado": "CI con `mvn verify`, build de Docker y CodeQL."
+  },
+  {
+    "id": "mediform",
+    "nombre": "MediForm",
+    "tag": "PYTHON · WEB",
+    "lang": "py",
+    "stack": ["Python", "Flask", "SQLite", "pytest"],
+    "repo": "https://github.com/Fernandamv96/Formulario-Cl-nico-",
+    "demo": null,
+    "problema": "En una ficha de consulta en papel quedan campos sin llenar, los signos vitales alterados pasan desapercibidos y buscar una consulta anterior toma tiempo.",
+    "solucion": "Un formulario clínico por secciones con validación en el cliente y en el servidor, alertas cuando un signo vital sale de rango, cálculo automático de edad e IMC y búsqueda por nombre o documento.",
+    "tecnologias": [
+      { "nombre": "Flask + Jinja2", "uso": "Rutas, plantillas y filtros propios (edad, IMC y estado de cada signo vital) usados directamente en el HTML." },
+      { "nombre": "SQLite", "uso": "Persistencia sin servidor externo; todas las consultas van parametrizadas con `?`." },
+      { "nombre": "Flask-WTF", "uso": "Protección CSRF en todos los formularios que envían datos." },
+      { "nombre": "JavaScript vanilla", "uso": "Validación en vivo y confirmación de borrado sin scripts inline, compatible con una CSP estricta." },
+      { "nombre": "pytest", "uso": "19 tests: creación de consultas, campos obligatorios, rechazo sin token CSRF, headers de seguridad y configuración." },
+      { "nombre": "gunicorn", "uso": "Servidor de producción para el despliegue (Procfile)." }
+    ],
+    "decisiones": [
+      "Debug apagado por defecto y servidor en 127.0.0.1: `debug=True` en 0.0.0.0 expone la consola de Werkzeug a la red.",
+      "La app no arranca en producción sin `SECRET_KEY`.",
+      "Headers CSP, X-Frame-Options, X-Content-Type-Options y Referrer-Policy en todas las respuestas.",
+      "Proyecto educativo: no está pensado para datos clínicos reales."
+    ],
+    "resultado": "CI con ruff y pytest en Python 3.10 y 3.12, más CodeQL."
+  },
+  {
+    "id": "infografia",
+    "nombre": "Infografía: ataque al Banco de Chile 2018",
+    "tag": "REACT · CYBERSEC",
+    "lang": "js",
+    "stack": ["React", "Vite", "CSS", "GitHub Pages"],
+    "repo": "https://github.com/Fernandamv96/Infografia-.banco",
+    "demo": "https://fernandamv96.github.io/Infografia-.banco/",
+    "problema": "Los incidentes reales se estudian con textos largos y, muchas veces, con datos que nadie verificó.",
+    "solucion": "Una infografía interactiva que explica el ataque con la tríada CIA y marca cada afirmación como documentada, hipótesis o no confirmada, con sus fuentes.",
+    "tecnologias": [
+      { "nombre": "React", "uso": "Componentes reutilizables: cronología desplegable, pestañas de la tríada CIA y filtro vulnerabilidad → medidas que la mitigan." },
+      { "nombre": "JSON + node:test", "uso": "Todo el contenido vive en un JSON y los tests verifican que cada referencia a una fuente y cada vínculo vulnerabilidad → medida existan." },
+      { "nombre": "Vite + GitHub Actions", "uso": "Build de producción y despliegue automático en GitHub Pages en cada push." },
+      { "nombre": "WAI-ARIA", "uso": "Pestañas navegables con flechas, acordeón con `aria-expanded` y filtros con `aria-pressed` y `aria-live`." },
+      { "nombre": "CSS propio", "uso": "Estética terminal, estilos de impresión para exportar a PDF y `prefers-reduced-motion`." }
+    ],
+    "decisiones": [
+      "Contrastar fuentes corrigió la versión original: el malware fue un wiper (KillDisk), no WannaCry, y se quitaron cifras sin respaldo.",
+      "Verificada con axe-core: 0 violaciones WCAG 2.1 AA."
+    ],
+    "resultado": "CI con ESLint, tests de datos y build, más CodeQL."
+  },
+  {
+    "id": "auditoria-cia",
+    "nombre": "Auditoría CIA",
+    "tag": "CYBERSEC · CIA",
+    "lang": "py",
+    "stack": ["Python", "hashlib", "HTML", "pytest"],
+    "repo": "https://github.com/Fernandamv96/Fundamentos-de-la-seguridad-de-la-info-",
+    "demo": null,
+    "problema": "¿Cómo evitar que un alumno vea datos sensibles de otros, que altere sus notas o que una caída de los sistemas arruine la semana de exámenes?",
+    "solucion": "Una simulación de controles para cada principio de la tríada CIA en los sistemas de INACAP, en Python y como simulador interactivo en HTML.",
+    "tecnologias": [
+      { "nombre": "Python (biblioteca estándar)", "uso": "Una clase por principio: control de acceso por roles con log de auditoría, integridad de notas e impacto de un DDoS con plan de continuidad." },
+      { "nombre": "hashlib (SHA-256)", "uso": "Un hash por registro académico detecta cualquier cambio hecho por fuera del sistema; los cambios no autorizados se revierten." },
+      { "nombre": "HTML + JavaScript", "uso": "Versión interactiva para probar roles y recursos desde el navegador." },
+      { "nombre": "pytest + ruff", "uso": "16 tests y lint con reglas de seguridad (bandit) en CI." }
+    ],
+    "decisiones": [
+      "Los tests revelaron que el control de acceso permitía recursos desconocidos (fail-open); ahora deniega por defecto.",
+      "Un hash sin clave detecta cambios accidentales, pero contra un atacante haría falta un HMAC: queda documentado como mejora."
+    ],
+    "resultado": "CI con ruff, pytest y ejecución completa de la simulación."
+  },
+  {
+    "id": "wiki-sqli",
+    "nombre": "Wiki de Inyección SQL",
+    "tag": "REACT · CYBERSEC",
+    "lang": "js",
+    "stack": ["React", "Vite", "CSS"],
+    "repo": "https://github.com/Fernandamv96/Wiki-Inyecci-n-Sql-",
+    "demo": "https://wiki-inyecci-n-sql-c96e.vercel.app",
+    "problema": "La inyección SQL se suele explicar con código que intimida a quien empieza, y sin dejar claro cómo se previene.",
+    "solucion": "Una wiki con analogías, una simulación que no ejecuta nada y un checklist de prevención, pensada para estudiantes y exposiciones.",
+    "tecnologias": [
+      { "nombre": "React + Vite", "uso": "Siete secciones navegables, búsqueda global con Ctrl/Cmd + K, modo claro/oscuro persistente y exportación a PDF." },
+      { "nombre": "Simulador propio", "uso": "Muestra token a token cómo seis payloads clásicos alteran una consulta, sin conectarse a ninguna base de datos." },
+      { "nombre": "CSS responsive", "uso": "Diseño para móvil, tablet y escritorio sin librerías de UI." }
+    ],
+    "decisiones": [
+      "Enseñar el concepto sin publicar material ofensivo funcional.",
+      "La prevención se centra en consultas parametrizadas; la validación y el escape son capas extra."
+    ],
+    "resultado": "CI con ESLint y build, más CodeQL."
+  },
+  {
+    "id": "turismo",
+    "nombre": "Turismo Extremo Sur",
+    "tag": "HTML · WEB",
+    "lang": "html",
+    "stack": ["HTML", "CSS", "JavaScript", "Vercel"],
+    "repo": "https://github.com/Fernandamv96/turismo-extremo-sur",
+    "demo": "https://turismo-extremo-sur-zeta.vercel.app",
+    "problema": "Una agencia de turismo aventura de Punta Arenas no tenía dónde mostrar sus rutas y precios ni cómo recibir consultas de reserva.",
+    "solucion": "Un sitio estático rápido, sin dependencias, con servicios, mapa de ubicación y formulario de contacto validado.",
+    "tecnologias": [
+      { "nombre": "HTML semántico + CSS", "uso": "Layout responsive con custom properties y menú hamburguesa en móvil." },
+      { "nombre": "JavaScript vanilla", "uso": "Las tarjetas de servicios se generan desde un arreglo de datos, el formulario se valida en el cliente y las animaciones respetan `prefers-reduced-motion`." },
+      { "nombre": "Vercel", "uso": "Despliegue con headers de seguridad: CSP, X-Frame-Options, Referrer-Policy y Permissions-Policy." }
+    ],
+    "decisiones": [
+      "Para que la CSP prohíba estilos inline, el encuadre de las imágenes pasó de `style=\"...\"` a CSSOM.",
+      "El navbar translúcido sobre la aurora animada no cumplía el contraste AA: se le dio fondo oscuro."
+    ],
+    "resultado": "CI con ESLint, html-validate y verificación de recursos; axe-core sin violaciones."
+  }
+]
