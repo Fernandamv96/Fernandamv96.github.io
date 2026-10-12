@@ -24,6 +24,9 @@ jobs:
       - name: Lint (eslint + html-validate)
         run: npm run lint
 
+      - name: Proyectos sincronizados con data/proyectos.json
+        run: node scripts/build-proyectos.mjs --check
+
       - name: Build (data.json)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
