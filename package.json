@@ -5,7 +5,7 @@
   "description": "Portafolio personal de Fernanda (Ferr): sitio estático + data.json generado en el build",
   "type": "module",
   "scripts": {
-    "lint": "eslint assets/js scripts && html-validate index.html",
+    "lint": "eslint assets/js scripts && html-validate index.html en/index.html",
     "data": "node scripts/build-data.mjs data.json",
     "start": "npx --yes serve@14 -l 8000 .",
     "proyectos": "node scripts/build-proyectos.mjs"
