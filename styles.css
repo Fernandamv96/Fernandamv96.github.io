@@ -1236,3 +1236,18 @@ ul.learning-row,
   border: 1px solid var(--surface-line);
   background: var(--surface-deep);
 }
+
+/* Selector de idioma ES / EN */
+.lang-switch {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 6px 10px;
+  border: 1px solid var(--color-neon-magenta);
+  border-radius: var(--radius-pill);
+  color: var(--color-neon-magenta);
+}
+.lang-switch:hover { background: rgba(255, 43, 214, 0.12); }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; }
