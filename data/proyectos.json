@@ -4,19 +4,45 @@
     "nombre": "Clínica: registro de pacientes",
     "tag": "JAVA · API REST",
     "lang": "java",
-    "stack": ["Java 21", "Spring Boot", "PostgreSQL", "Docker"],
+    "stack": [
+      "Java 21",
+      "Spring Boot",
+      "PostgreSQL",
+      "Docker"
+    ],
     "repo": "https://github.com/Fernandamv96/Clinica-registro-pacientes",
     "demo": null,
     "problema": "Llevar pacientes e historial clínico en planillas expone datos sensibles y no controla quién puede ver o modificar cada registro.",
     "solucion": "Una API REST con autenticación, tres roles (admin, médico y recepción) y validación del RUT chileno: recepción registra pacientes, los médicos escriben el historial y solo admin gestiona usuarios.",
     "tecnologias": [
-      { "nombre": "Spring Boot 3", "uso": "Estructura en capas (controller → service → repository), DTOs y un manejador global de errores con respuestas consistentes." },
-      { "nombre": "Spring Security + JWT", "uso": "El login entrega un token y cada endpoint exige un rol con `@PreAuthorize`; las contraseñas se guardan con BCrypt." },
-      { "nombre": "PostgreSQL + Flyway", "uso": "El esquema vive en migraciones versionadas (tablas, índices y datos de desarrollo), así la base se recrea igual en cualquier entorno." },
-      { "nombre": "Spring Data JPA", "uso": "Búsqueda paginada de pacientes por RUT, nombre o email sin escribir SQL a mano." },
-      { "nombre": "Docker Compose", "uso": "Levanta API y PostgreSQL con un comando; imagen multi-stage con usuario no-root, y Compose se detiene si falta un secreto." },
-      { "nombre": "JUnit 5 + Mockito", "uso": "22 tests: validador de RUT, servicio de pacientes y un test de regresión de seguridad." },
-      { "nombre": "SpringDoc OpenAPI", "uso": "Swagger UI para documentar y probar cada endpoint." }
+      {
+        "nombre": "Spring Boot 3",
+        "uso": "Estructura en capas (controller → service → repository), DTOs y un manejador global de errores con respuestas consistentes."
+      },
+      {
+        "nombre": "Spring Security + JWT",
+        "uso": "El login entrega un token y cada endpoint exige un rol con `@PreAuthorize`; las contraseñas se guardan con BCrypt."
+      },
+      {
+        "nombre": "PostgreSQL + Flyway",
+        "uso": "El esquema vive en migraciones versionadas (tablas, índices y datos de desarrollo), así la base se recrea igual en cualquier entorno."
+      },
+      {
+        "nombre": "Spring Data JPA",
+        "uso": "Búsqueda paginada de pacientes por RUT, nombre o email sin escribir SQL a mano."
+      },
+      {
+        "nombre": "Docker Compose",
+        "uso": "Levanta API y PostgreSQL con un comando; imagen multi-stage con usuario no-root, y Compose se detiene si falta un secreto."
+      },
+      {
+        "nombre": "JUnit 5 + Mockito",
+        "uso": "22 tests: validador de RUT, servicio de pacientes y un test de regresión de seguridad."
+      },
+      {
+        "nombre": "SpringDoc OpenAPI",
+        "uso": "Swagger UI para documentar y probar cada endpoint."
+      }
     ],
     "decisiones": [
       "Detecté que el registro de usuarios era público y permitía crearse una cuenta ADMIN: ahora solo un admin puede registrar usuarios, con un test que lo comprueba.",
@@ -30,18 +56,41 @@
     "nombre": "MediForm",
     "tag": "PYTHON · WEB",
     "lang": "py",
-    "stack": ["Python", "Flask", "SQLite", "pytest"],
+    "stack": [
+      "Python",
+      "Flask",
+      "SQLite",
+      "pytest"
+    ],
     "repo": "https://github.com/Fernandamv96/Formulario-Cl-nico-",
     "demo": null,
     "problema": "En una ficha de consulta en papel quedan campos sin llenar, los signos vitales alterados pasan desapercibidos y buscar una consulta anterior toma tiempo.",
     "solucion": "Un formulario clínico por secciones con validación en el cliente y en el servidor, alertas cuando un signo vital sale de rango, cálculo automático de edad e IMC y búsqueda por nombre o documento.",
     "tecnologias": [
-      { "nombre": "Flask + Jinja2", "uso": "Rutas, plantillas y filtros propios (edad, IMC y estado de cada signo vital) usados directamente en el HTML." },
-      { "nombre": "SQLite", "uso": "Persistencia sin servidor externo; todas las consultas van parametrizadas con `?`." },
-      { "nombre": "Flask-WTF", "uso": "Protección CSRF en todos los formularios que envían datos." },
-      { "nombre": "JavaScript vanilla", "uso": "Validación en vivo y confirmación de borrado sin scripts inline, compatible con una CSP estricta." },
-      { "nombre": "pytest", "uso": "19 tests: creación de consultas, campos obligatorios, rechazo sin token CSRF, headers de seguridad y configuración." },
-      { "nombre": "gunicorn", "uso": "Servidor de producción para el despliegue (Procfile)." }
+      {
+        "nombre": "Flask + Jinja2",
+        "uso": "Rutas, plantillas y filtros propios (edad, IMC y estado de cada signo vital) usados directamente en el HTML."
+      },
+      {
+        "nombre": "SQLite",
+        "uso": "Persistencia sin servidor externo; todas las consultas van parametrizadas con `?`."
+      },
+      {
+        "nombre": "Flask-WTF",
+        "uso": "Protección CSRF en todos los formularios que envían datos."
+      },
+      {
+        "nombre": "JavaScript vanilla",
+        "uso": "Validación en vivo y confirmación de borrado sin scripts inline, compatible con una CSP estricta."
+      },
+      {
+        "nombre": "pytest",
+        "uso": "19 tests: creación de consultas, campos obligatorios, rechazo sin token CSRF, headers de seguridad y configuración."
+      },
+      {
+        "nombre": "gunicorn",
+        "uso": "Servidor de producción para el despliegue (Procfile)."
+      }
     ],
     "decisiones": [
       "Debug apagado por defecto y servidor en 127.0.0.1: `debug=True` en 0.0.0.0 expone la consola de Werkzeug a la red.",
@@ -56,17 +105,37 @@
     "nombre": "Infografía: ataque al Banco de Chile 2018",
     "tag": "REACT · CYBERSEC",
     "lang": "js",
-    "stack": ["React", "Vite", "CSS", "GitHub Pages"],
+    "stack": [
+      "React",
+      "Vite",
+      "CSS",
+      "GitHub Pages"
+    ],
     "repo": "https://github.com/Fernandamv96/Infografia-.banco",
     "demo": "https://fernandamv96.github.io/Infografia-.banco/",
     "problema": "Los incidentes reales se estudian con textos largos y, muchas veces, con datos que nadie verificó.",
     "solucion": "Una infografía interactiva que explica el ataque con la tríada CIA y marca cada afirmación como documentada, hipótesis o no confirmada, con sus fuentes.",
     "tecnologias": [
-      { "nombre": "React", "uso": "Componentes reutilizables: cronología desplegable, pestañas de la tríada CIA y filtro vulnerabilidad → medidas que la mitigan." },
-      { "nombre": "JSON + node:test", "uso": "Todo el contenido vive en un JSON y los tests verifican que cada referencia a una fuente y cada vínculo vulnerabilidad → medida existan." },
-      { "nombre": "Vite + GitHub Actions", "uso": "Build de producción y despliegue automático en GitHub Pages en cada push." },
-      { "nombre": "WAI-ARIA", "uso": "Pestañas navegables con flechas, acordeón con `aria-expanded` y filtros con `aria-pressed` y `aria-live`." },
-      { "nombre": "CSS propio", "uso": "Estética terminal, estilos de impresión para exportar a PDF y `prefers-reduced-motion`." }
+      {
+        "nombre": "React",
+        "uso": "Componentes reutilizables: cronología desplegable, pestañas de la tríada CIA y filtro vulnerabilidad → medidas que la mitigan."
+      },
+      {
+        "nombre": "JSON + node:test",
+        "uso": "Todo el contenido vive en un JSON y los tests verifican que cada referencia a una fuente y cada vínculo vulnerabilidad → medida existan."
+      },
+      {
+        "nombre": "Vite + GitHub Actions",
+        "uso": "Build de producción y despliegue automático en GitHub Pages en cada push."
+      },
+      {
+        "nombre": "WAI-ARIA",
+        "uso": "Pestañas navegables con flechas, acordeón con `aria-expanded` y filtros con `aria-pressed` y `aria-live`."
+      },
+      {
+        "nombre": "CSS propio",
+        "uso": "Estética terminal, estilos de impresión para exportar a PDF y `prefers-reduced-motion`."
+      }
     ],
     "decisiones": [
       "Contrastar fuentes corrigió la versión original: el malware fue un wiper (KillDisk), no WannaCry, y se quitaron cifras sin respaldo.",
@@ -79,16 +148,33 @@
     "nombre": "Auditoría CIA",
     "tag": "CYBERSEC · CIA",
     "lang": "py",
-    "stack": ["Python", "hashlib", "HTML", "pytest"],
+    "stack": [
+      "Python",
+      "hashlib",
+      "HTML",
+      "pytest"
+    ],
     "repo": "https://github.com/Fernandamv96/Fundamentos-de-la-seguridad-de-la-info-",
     "demo": null,
     "problema": "¿Cómo evitar que un alumno vea datos sensibles de otros, que altere sus notas o que una caída de los sistemas arruine la semana de exámenes?",
     "solucion": "Una simulación de controles para cada principio de la tríada CIA en los sistemas de INACAP, en Python y como simulador interactivo en HTML.",
     "tecnologias": [
-      { "nombre": "Python (biblioteca estándar)", "uso": "Una clase por principio: control de acceso por roles con log de auditoría, integridad de notas e impacto de un DDoS con plan de continuidad." },
-      { "nombre": "hashlib (SHA-256)", "uso": "Un hash por registro académico detecta cualquier cambio hecho por fuera del sistema; los cambios no autorizados se revierten." },
-      { "nombre": "HTML + JavaScript", "uso": "Versión interactiva para probar roles y recursos desde el navegador." },
-      { "nombre": "pytest + ruff", "uso": "16 tests y lint con reglas de seguridad (bandit) en CI." }
+      {
+        "nombre": "Python (biblioteca estándar)",
+        "uso": "Una clase por principio: control de acceso por roles con log de auditoría, integridad de notas e impacto de un DDoS con plan de continuidad."
+      },
+      {
+        "nombre": "hashlib (SHA-256)",
+        "uso": "Un hash por registro académico detecta cualquier cambio hecho por fuera del sistema; los cambios no autorizados se revierten."
+      },
+      {
+        "nombre": "HTML + JavaScript",
+        "uso": "Versión interactiva para probar roles y recursos desde el navegador."
+      },
+      {
+        "nombre": "pytest + ruff",
+        "uso": "16 tests y lint con reglas de seguridad (bandit) en CI."
+      }
     ],
     "decisiones": [
       "Los tests revelaron que el control de acceso permitía recursos desconocidos (fail-open); ahora deniega por defecto.",
@@ -101,15 +187,28 @@
     "nombre": "Wiki de Inyección SQL",
     "tag": "REACT · CYBERSEC",
     "lang": "js",
-    "stack": ["React", "Vite", "CSS"],
+    "stack": [
+      "React",
+      "Vite",
+      "CSS"
+    ],
     "repo": "https://github.com/Fernandamv96/Wiki-Inyecci-n-Sql-",
     "demo": "https://wiki-inyecci-n-sql-c96e.vercel.app",
     "problema": "La inyección SQL se suele explicar con código que intimida a quien empieza, y sin dejar claro cómo se previene.",
     "solucion": "Una wiki con analogías, una simulación que no ejecuta nada y un checklist de prevención, pensada para estudiantes y exposiciones.",
     "tecnologias": [
-      { "nombre": "React + Vite", "uso": "Siete secciones navegables, búsqueda global con Ctrl/Cmd + K, modo claro/oscuro persistente y exportación a PDF." },
-      { "nombre": "Simulador propio", "uso": "Muestra token a token cómo seis payloads clásicos alteran una consulta, sin conectarse a ninguna base de datos." },
-      { "nombre": "CSS responsive", "uso": "Diseño para móvil, tablet y escritorio sin librerías de UI." }
+      {
+        "nombre": "React + Vite",
+        "uso": "Siete secciones navegables, búsqueda global con Ctrl/Cmd + K, modo claro/oscuro persistente y exportación a PDF."
+      },
+      {
+        "nombre": "Simulador propio",
+        "uso": "Muestra token a token cómo seis payloads clásicos alteran una consulta, sin conectarse a ninguna base de datos."
+      },
+      {
+        "nombre": "CSS responsive",
+        "uso": "Diseño para móvil, tablet y escritorio sin librerías de UI."
+      }
     ],
     "decisiones": [
       "Enseñar el concepto sin publicar material ofensivo funcional.",
@@ -122,20 +221,129 @@
     "nombre": "Turismo Extremo Sur",
     "tag": "HTML · WEB",
     "lang": "html",
-    "stack": ["HTML", "CSS", "JavaScript", "Vercel"],
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Vercel"
+    ],
     "repo": "https://github.com/Fernandamv96/turismo-extremo-sur",
     "demo": "https://turismo-extremo-sur-zeta.vercel.app",
     "problema": "Una agencia de turismo aventura de Punta Arenas no tenía dónde mostrar sus rutas y precios ni cómo recibir consultas de reserva.",
     "solucion": "Un sitio estático rápido, sin dependencias, con servicios, mapa de ubicación y formulario de contacto validado.",
     "tecnologias": [
-      { "nombre": "HTML semántico + CSS", "uso": "Layout responsive con custom properties y menú hamburguesa en móvil." },
-      { "nombre": "JavaScript vanilla", "uso": "Las tarjetas de servicios se generan desde un arreglo de datos, el formulario se valida en el cliente y las animaciones respetan `prefers-reduced-motion`." },
-      { "nombre": "Vercel", "uso": "Despliegue con headers de seguridad: CSP, X-Frame-Options, Referrer-Policy y Permissions-Policy." }
+      {
+        "nombre": "HTML semántico + CSS",
+        "uso": "Layout responsive con custom properties y menú hamburguesa en móvil."
+      },
+      {
+        "nombre": "JavaScript vanilla",
+        "uso": "Las tarjetas de servicios se generan desde un arreglo de datos, el formulario se valida en el cliente y las animaciones respetan `prefers-reduced-motion`."
+      },
+      {
+        "nombre": "Vercel",
+        "uso": "Despliegue con headers de seguridad: CSP, X-Frame-Options, Referrer-Policy y Permissions-Policy."
+      }
     ],
     "decisiones": [
       "Para que la CSP prohíba estilos inline, el encuadre de las imágenes pasó de `style=\"...\"` a CSSOM.",
       "El navbar translúcido sobre la aurora animada no cumplía el contraste AA: se le dio fondo oscuro."
     ],
     "resultado": "CI con ESLint, html-validate y verificación de recursos; axe-core sin violaciones."
+  },
+  {
+    "id": "techstore",
+    "nombre": "TechStore Manager",
+    "tag": "FULL STACK · REACT",
+    "lang": "js",
+    "stack": [
+      "React",
+      "Express",
+      "Axios",
+      "Vercel"
+    ],
+    "repo": "https://github.com/Fernandamv96/TechStoreManager",
+    "demo": "https://techstore-api-one.vercel.app",
+    "problema": "Una tienda de tecnología administraba su inventario a mano, sin una vista rápida del stock, el valor total ni los productos por reponer.",
+    "solucion": "Un sistema full stack con API REST para el CRUD de productos y un panel en React con métricas de inventario en tiempo real.",
+    "tecnologias": [
+      {
+        "nombre": "Express",
+        "uso": "API REST separada en rutas, controladores y middleware; la validación en el servidor (nombre, categoría, precio > 0, stock ≥ 0) es la fuente de verdad."
+      },
+      {
+        "nombre": "Middleware propio",
+        "uso": "Un logger registra método, ruta y hora de cada petición."
+      },
+      {
+        "nombre": "React",
+        "uso": "Componentes (formulario, tabla, estadísticas, notificaciones) con `useState`, `useMemo` para las métricas y `useCallback` para los manejadores."
+      },
+      {
+        "nombre": "Axios",
+        "uso": "Una capa `services/api.js` centraliza las llamadas y convierte los errores en mensajes legibles para el usuario."
+      },
+      {
+        "nombre": "Vercel",
+        "uso": "Frontend y API desplegados juntos: los rewrites envían `/productos` a una función serverless que reutiliza la app Express."
+      },
+      {
+        "nombre": "node:test",
+        "uso": "6 tests de la API sin dependencias extra: CRUD completo, validaciones, JSON malformado y headers."
+      }
+    ],
+    "decisiones": [
+      "CORS restringible con la variable `FRONTEND_URL` y sin la cabecera `X-Powered-By`.",
+      "El manejador de errores ya no devuelve `err.message` al cliente en producción.",
+      "`listen()` solo se ejecuta al correr el servidor directamente, para poder testear la app."
+    ],
+    "resultado": "CI con tests del backend, ESLint y build del frontend, más CodeQL."
+  },
+  {
+    "id": "farmacia",
+    "nombre": "Catálogo Farmacia",
+    "tag": "PYTHON · DJANGO",
+    "lang": "py",
+    "stack": [
+      "Python",
+      "Django",
+      "SQLite / PostgreSQL",
+      "Vercel"
+    ],
+    "repo": "https://github.com/Fernandamv96/CatalogoFarmacia",
+    "demo": null,
+    "problema": "En una farmacia, los productos vencidos o por vencer se detectan tarde cuando el inventario vive en una planilla.",
+    "solucion": "Un CRUD en Django que muestra el valor del inventario, alerta de los productos por vencer en 30 días o ya vencidos y no permite registrar productos con fecha vencida.",
+    "tecnologias": [
+      {
+        "nombre": "Django (vistas genéricas)",
+        "uso": "`ListView`, `CreateView`, `UpdateView` y `DeleteView` cubren el CRUD; la vista de listado calcula las métricas del inventario."
+      },
+      {
+        "nombre": "Django Forms",
+        "uso": "`clean_fecha_vencimiento` rechaza fechas pasadas antes de guardar."
+      },
+      {
+        "nombre": "ORM + migraciones",
+        "uso": "SQLite en local y PostgreSQL vía `DATABASE_URL` en producción, sin cambiar el código."
+      },
+      {
+        "nombre": "WhiteNoise",
+        "uso": "Sirve los archivos estáticos (incluido el admin) en el entorno serverless."
+      },
+      {
+        "nombre": "Vercel",
+        "uso": "Al arrancar se aplican las migraciones y se crea el superusuario desde variables de entorno."
+      },
+      {
+        "nombre": "Tests de Django",
+        "uso": "Listado, creación, eliminación y rechazo de fechas vencidas."
+      }
+    ],
+    "decisiones": [
+      "`SECRET_KEY` obligatoria en producción: antes, si faltaba, se usaba una clave insegura.",
+      "Cookies `Secure`, HSTS y `Referrer-Policy` cuando `DEBUG` está apagado; el CI corre `manage.py check --deploy`."
+    ],
+    "resultado": "CI con ruff, tests de Django y chequeos de despliegue, más CodeQL."
   }
 ]
