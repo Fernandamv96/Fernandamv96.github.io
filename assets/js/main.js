@@ -25,7 +25,8 @@
   const fallback = document.querySelector('.stats-fallback')
   if (!stats) return
 
-  fetch('data.json', { cache: 'no-cache' })
+  // Ruta absoluta: funciona igual desde / y desde /en/
+  fetch('/data.json', { cache: 'no-cache' })
     .then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status)
       return res.json()
@@ -41,7 +42,8 @@
       const fecha = new Date(data.generatedAt)
       const time = stats.querySelector('[data-stat="generatedAt"]')
       time.dateTime = data.generatedAt
-      time.textContent = fecha.toLocaleDateString('es-CL', { day: 'numeric', month: 'long', year: 'numeric' })
+      const locale = document.documentElement.lang === 'en' ? 'en-US' : 'es-CL'
+      time.textContent = fecha.toLocaleDateString(locale, { day: 'numeric', month: 'long', year: 'numeric' })
 
       const bar = stats.querySelector('.langs-bar')
       const list = stats.querySelector('.langs-list')
