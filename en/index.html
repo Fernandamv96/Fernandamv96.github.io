@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' https://avatars.githubusercontent.com data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'"
+  />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>FERR — Code &amp; Cybersecurity Portfolio</title>
+  <meta name="description" content="Portfolio of Fernanda (Ferr), Programming and Cybersecurity student at INACAP (Chile): Java and Spring Boot APIs, Flask apps, React and security projects with CI and static analysis." />
+  <meta name="author" content="Fernanda (Fernandamv96)" />
+  <meta name="theme-color" content="#050510" />
+  <link rel="canonical" href="https://fernandamv96.github.io/en/" />
+  <link rel="alternate" hreflang="es" href="https://fernandamv96.github.io/" />
+  <link rel="alternate" hreflang="en" href="https://fernandamv96.github.io/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://fernandamv96.github.io/" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_CL" />
+  <meta property="og:site_name" content="FERR · Portfolio" />
+  <meta property="og:title" content="FERR — Programming & Cybersecurity Portfolio" />
+  <meta property="og:description" content="Programming & Cybersecurity student @ INACAP. Python · Flask · React · Java. CTF player who builds secure projects." />
+  <meta property="og:url" content="https://fernandamv96.github.io/en/" />
+  <meta property="og:image" content="https://fernandamv96.github.io/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="FERR: Programming & Cybersecurity, Fernanda's portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FERR — Programming & Cybersecurity Portfolio" />
+  <meta name="twitter:description" content="Python · Flask · React · Java. CTF player who builds secure projects." />
+  <meta name="twitter:image" content="https://fernandamv96.github.io/assets/og-image.png" />
+  <meta name="twitter:image:alt" content="FERR: Programming & Cybersecurity, Fernanda's portfolio" />
+
+  <link rel="preload" href="../assets/fonts/anton-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Fernanda",
+      "alternateName": "Ferr",
+      "url": "https://fernandamv96.github.io/en/",
+      "jobTitle": "Programming and Cybersecurity student",
+      "affiliation": { "@type": "CollegeOrUniversity", "name": "INACAP" },
+      "sameAs": [
+        "https://github.com/Fernandamv96",
+        "https://www.linkedin.com/in/fernanda-mv-b50367332/"
+      ]
+    }
+  </script>
+  <script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Circuit Watermark Layer -->
+  <div class="watermark" aria-hidden="true">
+    <svg class="watermark-leaf watermark-leaf-1" viewBox="0 0 200 200" fill="none">
+      <polygon points="100,10 175,55 175,145 100,190 25,145 25,55" stroke="currentColor" stroke-width="1.2" fill="none" />
+      <polygon points="100,40 150,70 150,130 100,160 50,130 50,70" stroke="currentColor" stroke-width="0.8" fill="none" />
+      <polygon points="100,70 125,85 125,115 100,130 75,115 75,85" stroke="currentColor" stroke-width="0.6" fill="none" />
+      <line x1="100" y1="10"  x2="100" y2="190" stroke="currentColor" stroke-width="0.5" />
+      <line x1="25"  y1="55"  x2="175" y2="145" stroke="currentColor" stroke-width="0.5" />
+      <line x1="175" y1="55"  x2="25"  y2="145" stroke="currentColor" stroke-width="0.5" />
+    </svg>
+    <svg class="watermark-leaf watermark-leaf-2" viewBox="0 0 200 200" fill="none">
+      <circle cx="100" cy="100" r="80" stroke="currentColor" stroke-width="1" fill="none" />
+      <circle cx="100" cy="100" r="60" stroke="currentColor" stroke-width="0.8" fill="none" />
+      <circle cx="100" cy="100" r="40" stroke="currentColor" stroke-width="0.6" fill="none" />
+      <circle cx="100" cy="100" r="20" stroke="currentColor" stroke-width="0.5" fill="none" />
+      <line x1="20"  y1="100" x2="180" y2="100" stroke="currentColor" stroke-width="0.4" />
+      <line x1="100" y1="20"  x2="100" y2="180" stroke="currentColor" stroke-width="0.4" />
+      <line x1="42"  y1="42"  x2="158" y2="158" stroke="currentColor" stroke-width="0.4" />
+      <line x1="158" y1="42"  x2="42"  y2="158" stroke="currentColor" stroke-width="0.4" />
+    </svg>
+    <svg class="watermark-leaf watermark-leaf-3" viewBox="0 0 200 200" fill="none">
+      <rect x="20"  y="20"  width="160" height="160" stroke="currentColor" stroke-width="0.6" fill="none" />
+      <rect x="40"  y="40"  width="120" height="120" stroke="currentColor" stroke-width="0.7" fill="none" />
+      <rect x="60"  y="60"  width="80"  height="80"  stroke="currentColor" stroke-width="0.8" fill="none" />
+      <rect x="80"  y="80"  width="40"  height="40"  stroke="currentColor" stroke-width="0.9" fill="none" />
+      <circle cx="20"  cy="20"  r="3" fill="currentColor" />
+      <circle cx="180" cy="20"  r="3" fill="currentColor" />
+      <circle cx="20"  cy="180" r="3" fill="currentColor" />
+      <circle cx="180" cy="180" r="3" fill="currentColor" />
+      <circle cx="100" cy="100" r="4" fill="currentColor" />
+    </svg>
+  </div>
+
+  <!-- Top Navigation -->
+  <header class="topnav">
+    <div class="topnav-inner">
+      <a class="brand" href="#home" aria-label="FERR, go to top">
+        <span class="brand-mark" aria-hidden="true">F</span>
+        <span class="brand-text" aria-hidden="true">FERR</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a class="nav-btn" href="#about">ABOUT</a>
+        <a class="nav-btn" href="#stack">STACK</a>
+        <a class="nav-btn" href="#work">WORK</a>
+        <a class="nav-btn" href="#stats">STATS</a>
+        <a class="nav-btn" href="#contact">CONTACT</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="lang-switch" href="../" hreflang="es" lang="es" aria-label="Ver este portafolio en español">ES</a>
+        <a class="nav-cta" href="https://github.com/Fernandamv96" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <p class="eyebrow">PROGRAMMING × CYBERSECURITY × INACAP</p>
+      <h1 class="display">
+        <span class="display-line">FERR</span>
+        <span class="display-line dim">FERNANDA</span>
+      </h1>
+      <div class="hero-meta">
+        <p class="hero-sub">
+          Programming and cybersecurity student. I build web apps that are secure by default, with tests,
+          CI and security analysis in every repo.
+          <span class="hero-sub-em">Always learning.</span>
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#work">SEE PROJECTS</a>
+          <a class="btn btn-ghost" href="#contact">GET IN TOUCH</a>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <div class="portrait-glow" aria-hidden="true"></div>
+        <img
+          class="portrait-img"
+          src="https://avatars.githubusercontent.com/u/217666129?v=4&amp;s=440"
+          alt="Fernanda (Ferr)'s GitHub avatar"
+          width="220"
+          height="220"
+          fetchpriority="low"
+        />
+      </div>
+      <p class="hero-typing" aria-hidden="true">
+        <span>$</span> cat ferr.txt <span class="cursor">_</span>
+      </p>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- ABOUT / whoami -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <p class="eyebrow">`&gt; whoami`</p>
+      <h2 class="heading" id="about-title">A NEW ANGLE OF CODE</h2>
+      <div class="about-grid">
+        <section class="code-card" aria-label="Terminal with information about Ferr">
+          <div class="code-card-head" aria-hidden="true">
+            <span class="dot dot-r"></span>
+            <span class="dot dot-y"></span>
+            <span class="dot dot-g"></span>
+            <span class="code-card-file">ferr.txt</span>
+          </div>
+          <pre class="code"><code><span class="c-key">name</span>     →  <span class="c-val">Ferr (Fernanda)</span>
+<span class="c-key">studies</span>  →  <span class="c-val">Programming + Cybersecurity @ INACAP</span>
+<span class="c-key">focus</span>    →  <span class="c-val">secure web apps: tests, CI, CodeQL</span>
+<span class="c-key">into</span>     →  <span class="c-val">CTF, ethical hacking, AppSec, DevSecOps</span>
+<span class="c-key">status</span>   →  <span class="c-val">always learning...</span></code></pre>
+        </section>
+        <div class="about-side">
+          <p class="lead">
+            I'm Fernanda, but everyone calls me <em>Ferr</em>. I study programming and cybersecurity at
+            <strong>INACAP</strong> (Chile) and spend my time between CTFs, code and music.
+          </p>
+          <ul class="about-list">
+            <li><span class="bullet" aria-hidden="true">●</span> APIs with Java + Spring Boot and apps with Flask</li>
+            <li><span class="bullet" aria-hidden="true">●</span> Frontends with React and vanilla JavaScript</li>
+            <li><span class="bullet" aria-hidden="true">●</span> Passionate about ethical hacking</li>
+            <li><span class="bullet" aria-hidden="true">●</span> Digital art &amp; pixel-art lover</li>
+          </ul>
+          <div class="badges">
+            <span class="badge badge-gold">PROGRAMMING</span>
+            <span class="badge badge-gold">CYBERSECURITY</span>
+            <span class="badge badge-red">CTF PLAYER</span>
+            <span class="badge badge-gold">PIXEL ART</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- STACK -->
+    <section class="section" id="stack" aria-labelledby="stack-title">
+      <p class="eyebrow">`&gt; stack`</p>
+      <h2 class="heading" id="stack-title">EVERYDAY<br />TOOLS</h2>
+      <p class="section-sub">The combo I use to build, break and learn.</p>
+      <ul class="stack-grid">
+        <li class="stack-tile"><span class="stack-glyph" aria-hidden="true">JS</span><span class="stack-name">JavaScript</span><span class="stack-note">web &amp; react</span></li>
+        <li class="stack-tile"><span class="stack-glyph" aria-hidden="true">PY</span><span class="stack-name">Python</span><span class="stack-note">flask, django &amp; ctf</span></li>
+        <li class="stack-tile"><span class="stack-glyph" aria-hidden="true">JV</span><span class="stack-name">Java</span><span class="stack-note">spring boot</span></li>
+        <li class="stack-tile"><span class="stack-glyph" aria-hidden="true">⚛</span><span class="stack-name">React</span><span class="stack-note">interfaces</span></li>
+        <li class="stack-tile"><span class="stack-glyph" aria-hidden="true">&lt;/&gt;</span><span class="stack-name">HTML5 / CSS3</span><span class="stack-note">structure &amp; style</span></li>
+        <li class="stack-tile"><span class="stack-glyph" aria-hidden="true">$_</span><span class="stack-name">Linux</span><span class="stack-note">terminal first</span></li>
+        <li class="stack-tile"><span class="stack-glyph" aria-hidden="true">⌥</span><span class="stack-name">Git</span><span class="stack-note">version control &amp; CI</span></li>
+        <li class="stack-tile"><span class="stack-glyph" aria-hidden="true">🐳</span><span class="stack-name">Docker</span><span class="stack-note">containers</span></li>
+      </ul>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- LEARNING -->
+    <section class="section" id="learning" aria-labelledby="learning-title">
+      <p class="eyebrow">`&gt; currently learning`</p>
+      <h2 class="heading" id="learning-title">ALWAYS<br />LEARNING</h2>
+      <ul class="learning-row">
+        <li class="pill pill-gold">DevSecOps</li>
+        <li class="pill pill-gold">Django</li>
+        <li class="pill pill-gold">Spring Security</li>
+        <li class="pill pill-gold">Linux &amp; Bash</li>
+        <li class="pill pill-red">CTF / Hacking</li>
+        <li class="pill pill-gold">Networking</li>
+      </ul>
+      <p class="section-foot">digital art · gaming · music 🎧</p>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- WORK / PROJECTS -->
+    <section class="section" id="work" aria-label="Projects">
+      <p class="eyebrow">`&gt; projects`</p>
+      <h2 class="heading" id="work-title">A NEW ANGLE<br />OF CODE</h2>
+      <p class="section-sub">For each project: the problem it solves, how I used each technology and the security decisions I made.</p>
+
+      <div class="project-grid case-grid">
+        <!-- proyectos:inicio -->
+        <article class="case" id="proyecto-clinica" aria-labelledby="proyecto-clinica-titulo">
+          <img class="case-thumb" src="../assets/proyectos/clinica.webp" alt="Swagger UI of the clinic API showing the authentication, medical history and patient endpoints" width="640" height="360" loading="lazy" decoding="async" />
+          <div class="project-head">
+            <span class="project-tag">JAVA · REST API</span>
+            <span class="lang-dot lang-java" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-clinica-titulo">Clinic: patient records API</h3>
+          <dl class="case-summary">
+            <div><dt>The problem</dt><dd>Keeping patients and medical histories in spreadsheets exposes sensitive data and gives no control over who can read or change each record.</dd></div>
+            <div><dt>The solution</dt><dd>A REST API with authentication, three roles (admin, doctor and reception) and Chilean RUT validation: reception registers patients, doctors write the medical history and only admins manage users.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>Java 21</li><li>Spring Boot</li><li>PostgreSQL</li><li>Docker</li></ul>
+          <details class="case-details">
+            <summary>How I built it</summary>
+            <div class="case-body">
+              <div>
+                <h4>How I used each technology</h4>
+                <dl class="case-tech">
+                  <dt>Spring Boot 3</dt>
+                  <dd>Layered structure (controller → service → repository), DTOs and a global exception handler with consistent responses.</dd>
+                  <dt>Spring Security + JWT</dt>
+                  <dd>Login returns a token and every endpoint requires a role through <code>@PreAuthorize</code>; passwords are stored with BCrypt.</dd>
+                  <dt>PostgreSQL + Flyway</dt>
+                  <dd>The schema lives in versioned migrations (tables, indexes and development data), so the database is rebuilt identically in any environment.</dd>
+                  <dt>Spring Data JPA</dt>
+                  <dd>Paginated patient search by RUT, name or email without hand-written SQL.</dd>
+                  <dt>Docker Compose</dt>
+                  <dd>Starts the API and PostgreSQL with one command; multi-stage image with a non-root user, and Compose stops if a secret is missing.</dd>
+                  <dt>JUnit 5 + Mockito</dt>
+                  <dd>22 tests: RUT validator, patient service and a security regression test.</dd>
+                  <dt>SpringDoc OpenAPI</dt>
+                  <dd>Swagger UI to document and try every endpoint.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisions &amp; security</h4>
+                <ul class="case-decisions">
+                  <li>I found that user registration was public and let anyone create an ADMIN account: now only an admin can register users, backed by a test.</li>
+                  <li>No default credentials or JWT secret: everything is read from environment variables (<code>.env.example</code>).</li>
+                  <li>The initial admin is created from an environment variable and its password is no longer printed in the logs.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI with <code>mvn verify</code>, Docker build and CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Clinica-registro-pacientes" target="_blank" rel="noopener noreferrer">code ↗<span class="sr-only"> for Clinic: patient records API</span></a>
+          </div>
+        </article>
+
+        <article class="case" id="proyecto-mediform" aria-labelledby="proyecto-mediform-titulo">
+          <img class="case-thumb" src="../assets/proyectos/mediform.webp" alt="MediForm new clinical visit form, patient data section" width="640" height="360" loading="lazy" decoding="async" />
+          <div class="project-head">
+            <span class="project-tag">PYTHON · WEB</span>
+            <span class="lang-dot lang-py" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-mediform-titulo">MediForm</h3>
+          <dl class="case-summary">
+            <div><dt>The problem</dt><dd>On a paper visit form, fields are left blank, abnormal vital signs go unnoticed and finding a previous visit takes time.</dd></div>
+            <div><dt>The solution</dt><dd>A sectioned clinical form validated on both client and server, with alerts when a vital sign is out of range, automatic age and BMI calculation, and search by name or ID number.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>Python</li><li>Flask</li><li>SQLite</li><li>pytest</li></ul>
+          <details class="case-details">
+            <summary>How I built it</summary>
+            <div class="case-body">
+              <div>
+                <h4>How I used each technology</h4>
+                <dl class="case-tech">
+                  <dt>Flask + Jinja2</dt>
+                  <dd>Routes, templates and custom filters (age, BMI and vital-sign status) used directly in the HTML.</dd>
+                  <dt>SQLite</dt>
+                  <dd>Serverless persistence; every query is parameterized with <code>?</code>.</dd>
+                  <dt>Flask-WTF</dt>
+                  <dd>CSRF protection on every form that submits data.</dd>
+                  <dt>Vanilla JavaScript</dt>
+                  <dd>Live validation and delete confirmation without inline scripts, compatible with a strict CSP.</dd>
+                  <dt>pytest</dt>
+                  <dd>19 tests: creating visits, required fields, rejecting requests without a CSRF token, security headers and configuration.</dd>
+                  <dt>gunicorn</dt>
+                  <dd>Production server for deployment (Procfile).</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisions &amp; security</h4>
+                <ul class="case-decisions">
+                  <li>Debug off by default and server bound to 127.0.0.1: <code>debug=True</code> on 0.0.0.0 exposes the Werkzeug console to the network.</li>
+                  <li>The app refuses to start in production without a <code>SECRET_KEY</code>.</li>
+                  <li>CSP, X-Frame-Options, X-Content-Type-Options and Referrer-Policy headers on every response.</li>
+                  <li>Educational project: not intended for real clinical data.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI with ruff and pytest on Python 3.10 and 3.12, plus CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Formulario-Cl-nico-" target="_blank" rel="noopener noreferrer">code ↗<span class="sr-only"> for MediForm</span></a>
+          </div>
+        </article>
+
+        <article class="case" id="proyecto-infografia" aria-labelledby="proyecto-infografia-titulo">
+          <img class="case-thumb" src="../assets/proyectos/infografia.webp" alt="Cover of the Banco de Chile cyberattack infographic with the incident figures" width="640" height="360" loading="lazy" decoding="async" />
+          <div class="project-head">
+            <span class="project-tag">REACT · CYBERSEC</span>
+            <span class="lang-dot lang-js" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-infografia-titulo">Infographic: the 2018 Banco de Chile attack</h3>
+          <dl class="case-summary">
+            <div><dt>The problem</dt><dd>Real incidents are studied through long texts and, often, with figures nobody verified.</dd></div>
+            <div><dt>The solution</dt><dd>An interactive infographic that explains the attack through the CIA triad and labels each claim as documented, hypothesis or unconfirmed, with its sources.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>React</li><li>Vite</li><li>CSS</li><li>GitHub Pages</li></ul>
+          <details class="case-details">
+            <summary>How I built it</summary>
+            <div class="case-body">
+              <div>
+                <h4>How I used each technology</h4>
+                <dl class="case-tech">
+                  <dt>React</dt>
+                  <dd>Reusable components: collapsible timeline, CIA triad tabs and a vulnerability → mitigations filter.</dd>
+                  <dt>JSON + node:test</dt>
+                  <dd>All content lives in a JSON file and tests check that every source reference and every vulnerability → mitigation link exists.</dd>
+                  <dt>Vite + GitHub Actions</dt>
+                  <dd>Production build and automatic deployment to GitHub Pages on every push.</dd>
+                  <dt>WAI-ARIA</dt>
+                  <dd>Arrow-key tabs, an accordion with <code>aria-expanded</code> and filters with <code>aria-pressed</code> and <code>aria-live</code>.</dd>
+                  <dt>Custom CSS</dt>
+                  <dd>Terminal look, print styles for PDF export and <code>prefers-reduced-motion</code>.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisions &amp; security</h4>
+                <ul class="case-decisions">
+                  <li>Cross-checking sources fixed the original version: the malware was a wiper (KillDisk), not WannaCry, and unsupported figures were removed.</li>
+                  <li>Checked with axe-core: 0 WCAG 2.1 AA violations.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI with ESLint, data tests and build, plus CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Infografia-.banco" target="_blank" rel="noopener noreferrer">code ↗<span class="sr-only"> for Infographic: the 2018 Banco de Chile attack</span></a>
+              <a class="case-link case-link-demo" href="https://fernandamv96.github.io/Infografia-.banco/" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> for Infographic: the 2018 Banco de Chile attack</span></a>
+          </div>
+        </article>
+
+        <article class="case" id="proyecto-auditoria-cia" aria-labelledby="proyecto-auditoria-cia-titulo">
+          <img class="case-thumb" src="../assets/proyectos/auditoria-cia.webp" alt="Audit simulator showing the three CIA principles and role-based access control" width="640" height="360" loading="lazy" decoding="async" />
+          <div class="project-head">
+            <span class="project-tag">CYBERSEC · CIA</span>
+            <span class="lang-dot lang-py" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-auditoria-cia-titulo">CIA Audit</h3>
+          <dl class="case-summary">
+            <div><dt>The problem</dt><dd>How do you stop a student from seeing other students&#39; sensitive data, changing their own grades, or losing exam week to a system outage?</dd></div>
+            <div><dt>The solution</dt><dd>A simulation of controls for each CIA principle applied to INACAP&#39;s systems, in Python and as an interactive HTML simulator.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>Python</li><li>hashlib</li><li>HTML</li><li>pytest</li></ul>
+          <details class="case-details">
+            <summary>How I built it</summary>
+            <div class="case-body">
+              <div>
+                <h4>How I used each technology</h4>
+                <dl class="case-tech">
+                  <dt>Python (standard library)</dt>
+                  <dd>One class per principle: role-based access control with an audit log, grade integrity, and the impact of a DDoS with a continuity plan.</dd>
+                  <dt>hashlib (SHA-256)</dt>
+                  <dd>A hash per academic record detects any change made outside the system; unauthorized changes are rolled back.</dd>
+                  <dt>HTML + JavaScript</dt>
+                  <dd>Interactive version to try roles and resources from the browser.</dd>
+                  <dt>pytest + ruff</dt>
+                  <dd>16 tests and linting with security rules (bandit) in CI.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisions &amp; security</h4>
+                <ul class="case-decisions">
+                  <li>Tests revealed that access control allowed unknown resources (fail-open); it now denies by default.</li>
+                  <li>An unkeyed hash detects accidental changes, but against an attacker you need an HMAC: documented as a next step.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI with ruff, pytest and a full run of the simulation.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Fundamentos-de-la-seguridad-de-la-info-" target="_blank" rel="noopener noreferrer">code ↗<span class="sr-only"> for CIA Audit</span></a>
+          </div>
+        </article>
+
+        <article class="case" id="proyecto-wiki-sqli" aria-labelledby="proyecto-wiki-sqli-titulo">
+          <img class="case-thumb" src="../assets/proyectos/wiki-sqli.webp" alt="Home page of the SQL injection wiki with its learning sections" width="640" height="360" loading="lazy" decoding="async" />
+          <div class="project-head">
+            <span class="project-tag">REACT · CYBERSEC</span>
+            <span class="lang-dot lang-js" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-wiki-sqli-titulo">SQL Injection Wiki</h3>
+          <dl class="case-summary">
+            <div><dt>The problem</dt><dd>SQL injection is usually explained with code that intimidates beginners, without making it clear how to prevent it.</dd></div>
+            <div><dt>The solution</dt><dd>A wiki with analogies, a simulation that executes nothing and a prevention checklist, designed for students and class presentations.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>React</li><li>Vite</li><li>CSS</li></ul>
+          <details class="case-details">
+            <summary>How I built it</summary>
+            <div class="case-body">
+              <div>
+                <h4>How I used each technology</h4>
+                <dl class="case-tech">
+                  <dt>React + Vite</dt>
+                  <dd>Seven navigable sections, global search with Ctrl/Cmd + K, persistent light/dark mode and PDF export.</dd>
+                  <dt>Custom simulator</dt>
+                  <dd>Shows token by token how six classic payloads alter a query, without connecting to any database.</dd>
+                  <dt>Responsive CSS</dt>
+                  <dd>Layout for mobile, tablet and desktop without UI libraries.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisions &amp; security</h4>
+                <ul class="case-decisions">
+                  <li>Teaching the concept without publishing working offensive material.</li>
+                  <li>Prevention focuses on parameterized queries; validation and escaping are extra layers.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI with ESLint and build, plus CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/Wiki-Inyecci-n-Sql-" target="_blank" rel="noopener noreferrer">code ↗<span class="sr-only"> for SQL Injection Wiki</span></a>
+              <a class="case-link case-link-demo" href="https://wiki-inyecci-n-sql-c96e.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> for SQL Injection Wiki</span></a>
+          </div>
+        </article>
+
+        <article class="case" id="proyecto-turismo" aria-labelledby="proyecto-turismo-titulo">
+          <img class="case-thumb" src="../assets/proyectos/turismo.webp" alt="Turismo Extremo Sur home page with the Cuernos del Paine" width="640" height="360" loading="lazy" decoding="async" />
+          <div class="project-head">
+            <span class="project-tag">HTML · WEB</span>
+            <span class="lang-dot lang-html" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-turismo-titulo">Turismo Extremo Sur</h3>
+          <dl class="case-summary">
+            <div><dt>The problem</dt><dd>An adventure tourism agency in Punta Arenas had nowhere to show its routes and prices or to receive booking inquiries.</dd></div>
+            <div><dt>The solution</dt><dd>A fast, dependency-free static site with services, a location map and a validated contact form.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Vercel</li></ul>
+          <details class="case-details">
+            <summary>How I built it</summary>
+            <div class="case-body">
+              <div>
+                <h4>How I used each technology</h4>
+                <dl class="case-tech">
+                  <dt>Semantic HTML + CSS</dt>
+                  <dd>Responsive layout with custom properties and a hamburger menu on mobile.</dd>
+                  <dt>Vanilla JavaScript</dt>
+                  <dd>Service cards are generated from a data array, the form is validated on the client and animations respect <code>prefers-reduced-motion</code>.</dd>
+                  <dt>Vercel</dt>
+                  <dd>Deployment with security headers: CSP, X-Frame-Options, Referrer-Policy and Permissions-Policy.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisions &amp; security</h4>
+                <ul class="case-decisions">
+                  <li>So the CSP could forbid inline styles, image framing moved from <code>style=&quot;...&quot;</code> to the CSSOM.</li>
+                  <li>The translucent navbar over the animated aurora failed AA contrast: it now has a dark background.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI with ESLint, html-validate and asset checks; axe-core with no violations.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/turismo-extremo-sur" target="_blank" rel="noopener noreferrer">code ↗<span class="sr-only"> for Turismo Extremo Sur</span></a>
+              <a class="case-link case-link-demo" href="https://turismo-extremo-sur-zeta.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> for Turismo Extremo Sur</span></a>
+          </div>
+        </article>
+
+        <article class="case" id="proyecto-techstore" aria-labelledby="proyecto-techstore-titulo">
+          <img class="case-thumb" src="../assets/proyectos/techstore.webp" alt="TechStore Manager dashboard with the product form and inventory metrics" width="640" height="360" loading="lazy" decoding="async" />
+          <div class="project-head">
+            <span class="project-tag">FULL STACK · REACT</span>
+            <span class="lang-dot lang-js" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-techstore-titulo">TechStore Manager</h3>
+          <dl class="case-summary">
+            <div><dt>The problem</dt><dd>A tech store managed its inventory by hand, with no quick view of stock, total value or products to restock.</dd></div>
+            <div><dt>The solution</dt><dd>A full-stack system with a REST API for product CRUD and a React dashboard with real-time inventory metrics.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>React</li><li>Express</li><li>Axios</li><li>Vercel</li></ul>
+          <details class="case-details">
+            <summary>How I built it</summary>
+            <div class="case-body">
+              <div>
+                <h4>How I used each technology</h4>
+                <dl class="case-tech">
+                  <dt>Express</dt>
+                  <dd>REST API split into routes, controllers and middleware; server-side validation (name, category, price &gt; 0, stock ≥ 0) is the source of truth.</dd>
+                  <dt>Custom middleware</dt>
+                  <dd>A logger records the method, path and time of every request.</dd>
+                  <dt>React</dt>
+                  <dd>Components (form, table, stats, notifications) with <code>useState</code>, <code>useMemo</code> for the metrics and <code>useCallback</code> for handlers.</dd>
+                  <dt>Axios</dt>
+                  <dd>A <code>services/api.js</code> layer centralizes requests and turns errors into readable messages for the user.</dd>
+                  <dt>Vercel</dt>
+                  <dd>Frontend and API deployed together: rewrites route <code>/productos</code> to a serverless function that reuses the Express app.</dd>
+                  <dt>node:test</dt>
+                  <dd>6 API tests with no extra dependencies: full CRUD, validation, malformed JSON and headers.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisions &amp; security</h4>
+                <ul class="case-decisions">
+                  <li>CORS can be restricted with the <code>FRONTEND_URL</code> variable, and the <code>X-Powered-By</code> header is gone.</li>
+                  <li>The error handler no longer returns <code>err.message</code> to the client in production.</li>
+                  <li><code>listen()</code> only runs when the server is started directly, so the app can be tested.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI with backend tests, frontend ESLint and build, plus CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/TechStoreManager" target="_blank" rel="noopener noreferrer">code ↗<span class="sr-only"> for TechStore Manager</span></a>
+              <a class="case-link case-link-demo" href="https://techstore-api-one.vercel.app" target="_blank" rel="noopener noreferrer">demo ↗<span class="sr-only"> for TechStore Manager</span></a>
+          </div>
+        </article>
+
+        <article class="case" id="proyecto-farmacia" aria-labelledby="proyecto-farmacia-titulo">
+          <img class="case-thumb" src="../assets/proyectos/farmacia.webp" alt="Medicine catalog with inventory metrics and expiration status" width="640" height="360" loading="lazy" decoding="async" />
+          <div class="project-head">
+            <span class="project-tag">PYTHON · DJANGO</span>
+            <span class="lang-dot lang-py" aria-hidden="true"></span>
+          </div>
+          <h3 class="project-title" id="proyecto-farmacia-titulo">Pharmacy Catalog</h3>
+          <dl class="case-summary">
+            <div><dt>The problem</dt><dd>In a pharmacy, expired or soon-to-expire products are caught too late when the inventory lives in a spreadsheet.</dd></div>
+            <div><dt>The solution</dt><dd>A Django CRUD that shows the inventory value, flags products expiring within 30 days or already expired, and rejects products with a past expiration date.</dd></div>
+          </dl>
+          <p class="sr-only">Stack:</p>
+          <ul class="case-stack"><li>Python</li><li>Django</li><li>SQLite / PostgreSQL</li><li>Vercel</li></ul>
+          <details class="case-details">
+            <summary>How I built it</summary>
+            <div class="case-body">
+              <div>
+                <h4>How I used each technology</h4>
+                <dl class="case-tech">
+                  <dt>Django (generic views)</dt>
+                  <dd><code>ListView</code>, <code>CreateView</code>, <code>UpdateView</code> and <code>DeleteView</code> cover the CRUD; the list view computes the inventory metrics.</dd>
+                  <dt>Django Forms</dt>
+                  <dd><code>clean_fecha_vencimiento</code> rejects past dates before saving.</dd>
+                  <dt>ORM + migrations</dt>
+                  <dd>SQLite locally and PostgreSQL through <code>DATABASE_URL</code> in production, with no code changes.</dd>
+                  <dt>WhiteNoise</dt>
+                  <dd>Serves static files (including the admin) in the serverless environment.</dd>
+                  <dt>Vercel</dt>
+                  <dd>On startup, migrations run and the superuser is created from environment variables.</dd>
+                  <dt>Django tests</dt>
+                  <dd>Listing, creation, deletion and rejection of expired dates.</dd>
+                </dl>
+              </div>
+              <div>
+                <h4>Decisions &amp; security</h4>
+                <ul class="case-decisions">
+                  <li><code>SECRET_KEY</code> is required in production: before, if it was missing, an insecure key was used.</li>
+                  <li><code>Secure</code> cookies, HSTS and <code>Referrer-Policy</code> when <code>DEBUG</code> is off; CI runs <code>manage.py check --deploy</code>.</li>
+                </ul>
+              </div>
+              <p class="case-result">CI with ruff, Django tests and deployment checks, plus CodeQL.</p>
+            </div>
+          </details>
+          <div class="case-links">
+              <a class="case-link" href="https://github.com/Fernandamv96/CatalogoFarmacia" target="_blank" rel="noopener noreferrer">code ↗<span class="sr-only"> for Pharmacy Catalog</span></a>
+          </div>
+        </article>
+        <!-- proyectos:fin -->
+      </div>
+      <p class="case-more">
+        <a href="https://github.com/Fernandamv96?tab=repositories" target="_blank" rel="noopener noreferrer">See all my repositories on GitHub ↗</a>
+      </p>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- STATS (datos desde data.json, generado por GitHub Actions) -->
+    <section class="section" id="stats" aria-labelledby="stats-title">
+      <p class="eyebrow">`&gt; stats`</p>
+      <h2 class="heading" id="stats-title">BY THE NUMBERS</h2>
+
+      <div class="stats-live" hidden>
+        <dl class="stats-grid">
+          <div class="stat"><dt class="stat-label">public repos</dt><dd class="stat-num" data-stat="publicRepos"></dd></div>
+          <div class="stat"><dt class="stat-label">followers</dt><dd class="stat-num" data-stat="followers"></dd></div>
+          <div class="stat"><dt class="stat-label">following</dt><dd class="stat-num" data-stat="following"></dd></div>
+          <div class="stat"><dt class="stat-label">curiosity</dt><dd class="stat-num">∞</dd></div>
+        </dl>
+        <h3 class="langs-title">Most used languages <span class="langs-note">(by bytes of code)</span></h3>
+        <div class="langs-bar" aria-hidden="true"></div>
+        <ul class="langs-list"></ul>
+        <p class="stats-updated">updated: <time data-stat="generatedAt"></time></p>
+      </div>
+
+      <p class="stats-fallback">
+        Stats are updated automatically from the public GitHub API.
+        If they don't load, you can see them directly on
+        <a href="https://github.com/Fernandamv96" target="_blank" rel="noopener noreferrer">my GitHub profile ↗</a>.
+      </p>
+    </section>
+
+    <hr class="dotted" />
+
+    <!-- CONTACT -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <p class="eyebrow">`&gt; contact`</p>
+      <h2 class="display display-section" id="contact-title">LET'S TALK</h2>
+      <p class="section-sub">Internship, a team CTF, feedback or just saying hi? Here's where to find me.</p>
+      <div class="contact-row">
+        <a class="btn btn-primary" href="mailto:[correo eliminado]">✉ EMAIL</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/fernanda-mv-b50367332/" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a>
+        <a class="btn btn-ghost" href="https://github.com/Fernandamv96" target="_blank" rel="noopener noreferrer">GITHUB ↗</a>
+        <a class="btn btn-ghost" href="https://open.spotify.com/user/3172sdkmnqoucgtdmsmun6nl6xf4" target="_blank" rel="noopener noreferrer">SPOTIFY ↗</a>
+      </div>
+      <p class="contact-foot">
+        <em>listening to whatever keeps me in focus mode</em> 🎧
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-line">
+      made with <span class="footer-fire" aria-hidden="true">🔥</span><span class="sr-only">love</span> by <a href="https://github.com/Fernandamv96" target="_blank" rel="noopener noreferrer">@Fernandamv96</a>
+    </p>
+    <p class="footer-meta">INACAP · Programming &amp; Cybersecurity · 2026</p>
+    <a class="float-btn" href="#home" aria-label="Back to top">
+      <span aria-hidden="true">↑</span>
+    </a>
+  </footer>
+</body>
+</html>
