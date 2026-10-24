@@ -39,7 +39,7 @@ jobs:
         # Si la API falla, el sitio se publica igual y muestra el fallback sin números
         run: node scripts/build-data.mjs _site/data.json || echo "::warning::No se pudo generar data.json"
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
